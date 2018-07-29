@@ -3,8 +3,8 @@ import moment from 'moment';
 
 class ArticleForm extends React.Component {
     state = {
-        title: '',
-        text: '',
+        title: this.props.article ? this.props.article.title : '',
+        text: this.props.article ? this.props.article.text : '',
         createdAt: moment().format('D. M. Y')
     };
     onTitleChange = (e) => {

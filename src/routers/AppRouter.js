@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import MainPage from '../components/MainPage';
 import NotFoundPage from '../components/NotFoundPage';
 import ViewArticle from '../components/ViewArticle'
+import EditArticle from '../components/EditArticle';
  
 export const history = createHistory();
 
@@ -17,6 +18,7 @@ const AppRouter = () => (
         <Route path="/" component={MainPage} exact={true} />
         <Route path="/create" component={AddArticle} />
         <Route path="/view/:id" component={ViewArticle} />
+        <Route path="/edit/:id" component={EditArticle} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

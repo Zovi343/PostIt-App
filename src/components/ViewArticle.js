@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const ViewArticle = ({ article }) => (
     <div>
@@ -9,6 +10,7 @@ const ViewArticle = ({ article }) => (
                     <h2>{article.title}</h2>
                     <p>{article.createdAt}</p>
                     <p>{article.text}</p>
+                    <Link to={`/edit/${article.id}`}>Edit Article</Link>
                 </div>
             ) : (
                 <h2> This article doesn't exist! </h2>

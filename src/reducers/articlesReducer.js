@@ -8,6 +8,17 @@ export default ( state = articlesReducerDefaultState, action) => {
                 ...state,
                 action.article
             ];
+        case 'EDIT_ARTICLE':
+            return state.map((article) => {
+                if (article.id === action.id) {
+                    return {
+                        ...article,
+                        ...action.updates
+                    }
+                } else {
+                    return article
+                }
+            });
         default:
             return state;
     }
