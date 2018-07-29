@@ -13,4 +13,9 @@ export const editArticle = (id, updates) => ({
     type: 'EDIT_ARTICLE',
     id, 
     updates
-})
+});
+
+export const removeArticle = (id) => ({
+    type: 'REMOVE_ARTICLE',
+    id
+}); 

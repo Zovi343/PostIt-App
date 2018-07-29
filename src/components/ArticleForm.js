@@ -39,7 +39,7 @@ class ArticleForm extends React.Component {
                     value={this.state.text}
                 >
                 </textarea>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Save Article" />
             </form>
         </div>
        );

@@ -19,6 +19,8 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return article
                 }
             });
+        case 'REMOVE_ARTICLE':
+            return state.filter((article) => article.id !== action.id);
         default:
             return state;
     }
