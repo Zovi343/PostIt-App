@@ -5,7 +5,8 @@ class ArticleForm extends React.Component {
     state = {
         title: this.props.article ? this.props.article.title : '',
         text: this.props.article ? this.props.article.text : '',
-        createdAt: moment().format('D. M. Y')
+        createdAt: moment().format('D. M. Y'),
+        error: ''
     };
     onTitleChange = (e) => {
         const title = e.target.value;
@@ -21,12 +22,17 @@ class ArticleForm extends React.Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onSubmit(this.state)
+        if (this.state.title.trim().length < 3 && this.state.text.trim().length < 3) {
+            this.setState(() => ({ error: 'Your title and text must contain at least 3 characters' }))
+        } else {
+            this.props.onSubmit(this.state)
+        }
     }
     render () {
        return ( 
         <div> 
             <form onSubmit={this.onSubmit}> 
+                {this.state.error && <p>{this.state.error}</p>}
                 <input 
                     onChange={this.onTitleChange} 
                     placeholder="Title" 
