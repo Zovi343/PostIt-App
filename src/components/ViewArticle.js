@@ -9,11 +9,11 @@ import { commentArticle, removeComment } from '../actions/articlesActions';
 class ViewArticle extends React.Component {
     onSubmit = (comment) => {
         this.props.dispatch(commentArticle(this.props.article.id ,comment));
-        this.props.history.push(`/view/${this.props.article.id}`);
+       // this.props.history.push(`/view/${this.props.article.id}`); // is this right way to do it ?
     }
     onClickDeleteComment = (commentId) => {
         this.props.dispatch(removeComment(this.props.article.id, commentId));
-        this.props.history.push(`/view/${this.props.article.id}`);
+        //this.props.history.push(`/view/${this.props.article.id}`);
     }
     render() {
         return (

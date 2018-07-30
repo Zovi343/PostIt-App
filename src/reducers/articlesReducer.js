@@ -25,7 +25,9 @@ export default ( state = articlesReducerDefaultState, action) => {
             return state.map((article) => {
                 if (article.id === action.id) {
                     article.comments.push(action.comment);
-                    return article;
+                    return {
+                        ...article
+                    };
                 } else {
                     return article
                 }
@@ -34,7 +36,9 @@ export default ( state = articlesReducerDefaultState, action) => {
             return state.map((article) => {
                 if (article.id === action.id) {
                     article.comments = article.comments.filter((comment) => comment.id !== action.commentId);
-                    return article;
+                    return {
+                        ...article
+                    };
                 } else {
                     return article
                 }
