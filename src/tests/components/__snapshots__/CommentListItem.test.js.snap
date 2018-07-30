@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CommentListItem correctly 1`] = `
+<li>
+  <p>
+    1.1.1970
+  </p>
+  <p>
+    Something to test?
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Delete
+  </button>
+</li>
+`;

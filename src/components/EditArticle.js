@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import ArticleForm from './ArticleForm';
 import { editArticle, removeArticle } from '../actions/articlesActions';
 
-class EditArticle extends React.Component {
+export class EditArticle extends React.Component {
     onSubmit = (article) => {
-        this.props.dispatch(editArticle(this.props.article.id, article));
+        this.props.editArticle(this.props.article.id, article);
         this.props.history.push('/');
     }
     onRemoveClick = () => {
-        this.props.dispatch(removeArticle(this.props.article.id));
+        this.props.removeArticle(this.props.article.id);
         this.props.history.push('/');
     }
     render () {
@@ -25,6 +25,11 @@ class EditArticle extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     article: state.articles.find((article) => article.id === props.match.params.id )
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    editArticle: (id, article) => dispatch(editArticle(id, article)),
+    removeArticle: (id) => dispatch(removeArticle(id))
 })
 
-export default connect(mapStateToProps)(EditArticle);
+export default connect(mapStateToProps, mapDispatchToProps)(EditArticle);
