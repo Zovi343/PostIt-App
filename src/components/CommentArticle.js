@@ -5,7 +5,7 @@ import moment from 'moment';
 class CommentArticle extends React.Component {
     state = {
         comment: '',
-        createdAt: moment().format('D. M. Y'),
+        createdAt: moment().format('D.M.Y'),
         error: ''
     };
     onTextareaChange = (e) => {

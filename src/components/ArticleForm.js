@@ -5,7 +5,7 @@ class ArticleForm extends React.Component {
     state = {
         title: this.props.article ? this.props.article.title : '',
         text: this.props.article ? this.props.article.text : '',
-        createdAt: moment().format('D. M. Y'),
+        createdAt: moment().format('D.M.Y'),
         error: ''
     };
     onTitleChange = (e) => {
@@ -25,12 +25,15 @@ class ArticleForm extends React.Component {
         if (this.state.title.trim().length < 3 && this.state.text.trim().length < 3) {
             this.setState(() => ({ error: 'Your title and text must contain at least 3 characters' }))
         } else {
-            this.props.onSubmit(this.state)
+            this.props.onSubmit({
+                title: this.state.title,
+                text: this.state.text,
+                createdAt: this.state.createdAt
+            });
         }
     }
     render () {
        return ( 
-        <div> 
             <form onSubmit={this.onSubmit}> 
                 {this.state.error && <p>{this.state.error}</p>}
                 <input 
@@ -47,7 +50,6 @@ class ArticleForm extends React.Component {
                 </textarea>
                 <input type="submit" value="Save Article" />
             </form>
-        </div>
        );
     }
 }

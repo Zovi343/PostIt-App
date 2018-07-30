@@ -1,6 +1,5 @@
-import moment from 'moment';
-import articles from '../fixtures/articlesFixtures';
 import articlesReducer from '../../reducers/articlesReducer';
+import articles from '../fixtures/articlesFixtures';
 
 test('should set default state', () => {
     const state = articlesReducer(undefined, {type: '@@INIT'});
@@ -28,7 +27,7 @@ test('should handle EDIT_ARTICLE action', () => {
     expect(state[0].title).toBe(action.updates.title);
 });
 
-test('should handle REMOVE_ARTICLE', () => {
+test('should handle REMOVE_ARTICLE action', () => {
     const action = {
         type: 'REMOVE_ARTICLE',
         id: articles[0].id,
@@ -36,3 +35,37 @@ test('should handle REMOVE_ARTICLE', () => {
     const state = articlesReducer(articles, action);
     expect(state.length).toBe(2);
 }); 
+
+test('should handle COMMENT_ARTICLE action', () => {
+    const action = {
+        type: 'COMMENT_ARTICLE',
+        id: articles[2].id,
+        comment: {
+            comment: 'Test comment',
+            createdAt: '2.7.2018',
+            id: '2a'
+        }
+    }
+    const state = articlesReducer(articles, action);
+    expect(state[2].comments[0]).toEqual(action.comment)
+});
+
+test('should handle REMOVE_COMMENT action', () => {
+    const action = {
+        type: 'REMOVE_COMMENT',
+        id: '1',
+        commentId: '1a'
+    };
+    const state = articlesReducer(articles, action);
+    expect(state[0].comments.length).toBe(0);
+});
+
+test('should handle ADD_LIKE action', () => {
+    const action = {
+        type: 'ADD_LIKE',
+        id: articles[2].id,
+        userId: 'someId'
+    }
+    const state = articlesReducer(articles, action);
+    expect(state[2].likes.length).toBe(1);
+});

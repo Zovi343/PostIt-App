@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ArticleListItem correctly 1`] = `
+<Link
+  replace={false}
+  to="view/1"
+>
+  <p>
+    Breaking news
+  </p>
+  <p>
+    1.1.1970
+  </p>
+  <p>
+     
+    <Component />
+     
+    1
+  </p>
+  <p>
+    <Component />
+     
+    1
+  </p>
+</Link>
+`;

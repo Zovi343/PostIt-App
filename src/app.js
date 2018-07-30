@@ -13,15 +13,15 @@ const store = configureStore();
 
 const articles = [{
   id: '1',
-  createdAt: moment(0).format('D. M. Y'),
+  createdAt: moment(0).format('D.M.Y'),
   title: 'Breaking news',
   text: 'Political info'
 },{
-  createdAt: moment(0).subtract(4, 'days').format('D. M. Y'),
+  createdAt: moment(0).subtract(4, 'days').format('D.M.Y'),
   title: 'New graphene chips ?',
   text: 'Are going to conqver world'
 },{
-  createdAt: moment(0).add(4, 'days').format('D. M. Y'),
+  createdAt: moment(0).add(4, 'days').format('D.M.Y'),
   title: 'New hydrogen revolution?',
   text: 'Hydrogen powered ship is going to sail'
 }

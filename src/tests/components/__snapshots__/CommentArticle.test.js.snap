@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CommentArticle with default data 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <textarea
+    onChange={[Function]}
+    placeholder="What are your thoughts ?"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Comment"
+  />
+</form>
+`;

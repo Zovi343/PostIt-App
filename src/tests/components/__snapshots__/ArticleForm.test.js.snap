@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ArticleForm correctly with article data 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value="Breaking news"
+  />
+  <textarea
+    onChange={[Function]}
+    placeholder="Add text for your article"
+    value="Political info"
+  />
+  <input
+    type="submit"
+    value="Save Article"
+  />
+</form>
+`;
+
+exports[`should render ArticleForm correctly with default data 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <input
+    onChange={[Function]}
+    placeholder="Title"
+    type="text"
+    value=""
+  />
+  <textarea
+    onChange={[Function]}
+    placeholder="Add text for your article"
+    value=""
+  />
+  <input
+    type="submit"
+    value="Save Article"
+  />
+</form>
+`;

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render AddArticle correctly 1`] = `
+<div>
+  <ArticleForm
+    onSubmit={[Function]}
+  />
+</div>
+`;

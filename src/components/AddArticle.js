@@ -4,9 +4,9 @@ import ArticleForm from './ArticleForm';
 import { addArticle } from '../actions/articlesActions'
 
 
-class AddArticle extends React.Component {
+export class AddArticle extends React.Component {
     onSubmit = (article) => {
-        this.props.dispatch(addArticle(article))
+        this.props.addArticle(article);
         this.props.history.push('/');
     }
     render () {
@@ -18,5 +18,9 @@ class AddArticle extends React.Component {
     }
 }
 
-export default connect(undefined)(AddArticle);
+const mapDispatchToProps = (dispatch) => ({
+    addArticle: (article) => dispatch(addArticle(article))
+})
+
+export default connect(undefined, mapDispatchToProps)(AddArticle);
 

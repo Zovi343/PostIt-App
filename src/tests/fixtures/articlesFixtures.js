@@ -1,19 +1,29 @@
 import moment from 'moment';
 
 const articles = [{
-        createdAt: moment(0).format('D. M. Y'),
+        comments: [{
+            comment: 'Something to test?',
+            id: '1a',
+            createdAt: moment(0).format('D.M.Y')
+        }],
+        createdAt: moment(0).format('D.M.Y'),
         id: '1',
+        likes: ['someId'],
         title: 'Breaking news',
         text: 'Political info'
     },{
-        createdAt: moment(0).subtract(4, 'days').format('D. M. Y'),
+        comments: [],
+        createdAt: moment(0).subtract(4, 'days').format('D.M.Y'),
         id: '2',
+        likes: [],
         title: 'New graphene chips',
         text: 'Are going to conqver world'
     },{
-        createdAt: moment(0).add(4, 'days').format('D. M. Y'),
+        comments: [],
+        createdAt: moment(0).add(4, 'days').format('D.M.Y'),
         id: '3',
-        title: 'New hydrogen revolution?',
+        likes: [],
+        title: 'Hydrogen revolution?',
         text: 'Hydrogen powered ship is going to sail'
     }
 ];

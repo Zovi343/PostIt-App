@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ArticleListItem from './ArticleListItem';
 
-const ArticleList = (props) => (
+export const ArticleList = (props) => (
     <div>
         <ol>
             {
