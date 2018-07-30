@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CommentArticle from './CommentArticle';
 import CommentList from './CommentList';
-import { commentArticle} from '../actions/articlesActions'; 
+import { IoIosHeart } from "react-icons/io";
+import { commentArticle, removeComment } from '../actions/articlesActions'; 
 
 class ViewArticle extends React.Component {
     onSubmit = (comment) => {
         this.props.dispatch(commentArticle(this.props.article.id ,comment));
+        this.props.history.push(`/view/${this.props.article.id}`);
+    }
+    onClickDeleteComment = (commentId) => {
+        this.props.dispatch(removeComment(this.props.article.id, commentId));
         this.props.history.push(`/view/${this.props.article.id}`);
     }
     render() {
@@ -21,7 +26,8 @@ class ViewArticle extends React.Component {
                             <p>{this.props.article.createdAt}</p>
                             <p>{this.props.article.text}</p>
                             <CommentArticle onSubmit={this.onSubmit} />
-                            <CommentList comments={this.props.article.comments}/>
+                            <button> <IoIosHeart /></button>
+                            <CommentList onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>
                         </div> 
                     ) : (
                         <h2> This article doesn't exist! </h2>

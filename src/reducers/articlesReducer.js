@@ -30,6 +30,15 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return article
                 }
             });
+        case 'REMOVE_COMMENT': 
+            return state.map((article) => {
+                if (article.id === action.id) {
+                    article.comments = article.comments.filter((comment) => comment.id !== action.commentId);
+                    return article;
+                } else {
+                    return article
+                }
+            });
         default:
             return state;
     }

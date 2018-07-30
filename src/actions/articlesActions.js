@@ -26,4 +26,10 @@ export const commentArticle = (id, comment) => ({
     type: 'COMMENT_ARTICLE',
     id,
     comment
+});
+
+export const removeComment = (id, commentId) => ({
+    type: 'REMOVE_COMMENT',
+    id,
+    commentId
 })
