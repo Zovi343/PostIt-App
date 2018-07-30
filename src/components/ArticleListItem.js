@@ -3,7 +3,7 @@ import { IoIosHeart, IoIosChatboxes } from "react-icons/io";
 import { Link } from 'react-router-dom';
 
 
-const ListItem = ({ id, title, createdAt}) => (
+const ArticleListItem = ({ id, title, createdAt}) => (
     <Link to={`view/${id}`}>
         <p>{title}</p>
         <p>{createdAt}</p>
@@ -12,4 +12,4 @@ const ListItem = ({ id, title, createdAt}) => (
     </Link>
 );
 
-export default ListItem;
+export default ArticleListItem;

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ListItem from './ListItem';
+import ArticleListItem from './ArticleListItem';
 
 const ArticleList = (props) => (
     <div>
         <ol>
             {
-                props.articles.map((article) => <ListItem key={article.id} {...article} />)
+                props.articles.map((article) => <ArticleListItem key={article.id} {...article} />)
             }
         </ol>
     </div>

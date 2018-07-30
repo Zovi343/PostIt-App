@@ -22,7 +22,7 @@ class CommentArticle extends React.Component {
             }));
         } else {
             const id = uuid();
-            this.props.onSubmit({...this.state, id});
+            this.props.onSubmit({comment: this.state.comment, createdAt: this.state.createdAt, id});
             this.setState(() =>  ({
                 comment: '',
                 error: ''
