@@ -16,6 +16,6 @@ const articles = [{
         title: 'New hydrogen revolution?',
         text: 'Hydrogen powered ship is going to sail'
     }
-]
+];
 
 export default articles;

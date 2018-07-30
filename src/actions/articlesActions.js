@@ -5,6 +5,8 @@ export const addArticle = (article) => ({
     type: 'ADD_ARTICLE',
     article: {
         id: uuid(),
+        likes: [],
+        comments: [],
         ...article
     }
 });
@@ -19,3 +21,9 @@ export const removeArticle = (id) => ({
     type: 'REMOVE_ARTICLE',
     id
 }); 
+
+export const commentArticle = (id, comment) => ({
+    type: 'COMMENT_ARTICLE',
+    id,
+    comment
+})

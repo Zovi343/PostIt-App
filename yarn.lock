@@ -4574,6 +4574,10 @@ react-dom@16.0.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
+react-icons@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.0.1.tgz#947cc0f953c28212f687e61ac11da5326fc3a981"
+
 react-modal@2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-2.2.2.tgz#4bbf98bc506e61c446c9f57329c7a488ea7d504b"

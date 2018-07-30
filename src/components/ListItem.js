@@ -1,10 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { IoIosHeart, IoIosChatboxes } from "react-icons/io";
+import { Link } from 'react-router-dom';
+
 
 const ListItem = ({ id, title, createdAt}) => (
     <Link to={`view/${id}`}>
         <p>{title}</p>
         <p>{createdAt}</p>
+        <p> <IoIosHeart /> 15</p>
+        <p><IoIosChatboxes />9</p>
     </Link>
 );
 
