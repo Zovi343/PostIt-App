@@ -32,4 +32,10 @@ export const removeComment = (id, commentId) => ({
     type: 'REMOVE_COMMENT',
     id,
     commentId
-})
+});
+
+export const addLike = ( id,userId) => ({
+    type: 'ADD_LIKE',
+    id,
+    userId
+});

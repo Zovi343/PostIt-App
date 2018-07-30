@@ -24,10 +24,9 @@ export default ( state = articlesReducerDefaultState, action) => {
         case 'COMMENT_ARTICLE':
             return state.map((article) => {
                 if (article.id === action.id) {
-                    article.comments.push(action.comment);
-                    return {
-                        ...article
-                    };
+                    const newArticle = Object.assign({}, article)
+                    newArticle.comments.push(action.comment);
+                    return newArticle;
                 } else {
                     return article
                 }
@@ -35,10 +34,19 @@ export default ( state = articlesReducerDefaultState, action) => {
         case 'REMOVE_COMMENT': 
             return state.map((article) => {
                 if (article.id === action.id) {
-                    article.comments = article.comments.filter((comment) => comment.id !== action.commentId);
-                    return {
-                        ...article
-                    };
+                    const newArticle = Object.assign({}, article)
+                    newArticle.comments = article.comments.filter((comment) => comment.id !== action.commentId);
+                    return newArticle;
+                } else {
+                    return article
+                }
+            });
+        case 'ADD_LIKE':
+            return state.map((article) => {
+                if (article.id === action.id) {
+                    const newArticle = Object.assign({}, article)
+                    newArticle.likes.push(action.userId);
+                    return newArticle;
                 } else {
                     return article
                 }
