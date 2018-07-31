@@ -1,9 +1,10 @@
 import React from 'react';
 import ArticleList from './ArticleList';
+import UserSection from './UserSection';
 
 const MainPage = () => (
     <div>
-        <p>Just trying to render something</p>
+        <UserSection />
         <ArticleList />
     </div>
 );

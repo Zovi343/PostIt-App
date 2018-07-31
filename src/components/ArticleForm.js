@@ -22,7 +22,7 @@ class ArticleForm extends React.Component {
     }
     onSubmit = (e) => {
         e.preventDefault();
-        if (this.state.title.trim().length < 3 && this.state.text.trim().length < 3) {
+        if (this.state.title.trim().length < 3 || this.state.text.trim().length < 3) {
             this.setState(() => ({ error: 'Your title and text must contain at least 3 characters' }))
         } else {
             this.props.onSubmit({
