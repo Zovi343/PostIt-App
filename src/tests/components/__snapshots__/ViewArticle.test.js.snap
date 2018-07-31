@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ViewArticle correctly 1`] = `
+<div>
+  <div>
+    <Link
+      replace={false}
+      to="/edit/1"
+    >
+      Edit Article
+    </Link>
+    <h2>
+      Breaking news
+    </h2>
+    <p>
+      1.1.1970
+    </p>
+    <p>
+      Political info
+    </p>
+    <CommentArticle
+      onSubmit={[Function]}
+    />
+    <button
+      onClick={[Function]}
+    >
+       
+      <Component />
+    </button>
+    <CommentList
+      comments={
+        Array [
+          Object {
+            "comment": "Something to test?",
+            "createdAt": "1.1.1970",
+            "id": "1a",
+          },
+        ]
+      }
+      onClickDeleteComment={[Function]}
+    />
+  </div>
+</div>
+`;
+
+exports[`should render ViewArticle with error message  1`] = `
+<div>
+  <h2>
+     This article doesn't exist! 
+  </h2>
+</div>
+`;

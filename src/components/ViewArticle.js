@@ -7,16 +7,16 @@ import CommentList from './CommentList';
 import { IoIosHeart } from "react-icons/io";
 import { addLike ,commentArticle, removeComment } from '../actions/articlesActions'; 
 
-class ViewArticle extends React.Component {
+export class ViewArticle extends React.Component {
     onSubmit = (comment) => {
-        this.props.dispatch(commentArticle(this.props.article.id ,comment));
+        this.props.commentArticle(this.props.article.id ,comment);
     }
     onClickDeleteComment = (commentId) => {
-        this.props.dispatch(removeComment(this.props.article.id, commentId));
+        this.props.removeComment(this.props.article.id, commentId);
     }
     onClickLike = () => {
         const userId = uuid();
-        this.props.dispatch(addLike( this.props.article.id ,userId));
+        this.props.addLike( this.props.article.id ,userId);
     }
     render() {
         return (
@@ -45,4 +45,10 @@ const mapStateToProps = (state, props) =>({
     article: state.articles.find((article) => article.id === props.match.params.id)
 });
 
-export default connect(mapStateToProps)(ViewArticle);
+const mapDispatchToProps = (dispatch) => ({
+   addLike: (id, userId) => dispatch(addLike(id, userId)),
+   commentArticle: (id, comment) => dispatch(commentArticle(id, comment)),
+   removeComment: (id, commentId) => dispatch(removeComment(id, commentId))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewArticle);
