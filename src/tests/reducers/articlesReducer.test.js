@@ -69,3 +69,17 @@ test('should handle ADD_LIKE action', () => {
     const state = articlesReducer(articles, action);
     expect(state[2].likes.length).toBe(1);
 });
+
+
+test('should handle REMOVE_LIKE action', () => {
+    const action = {
+        type: 'REMOVE_LIKE',
+        id: articles[0].id,
+        userId: articles[0].likes[0]
+    }
+    const state = articlesReducer(articles, action);
+    expect(state[0].likes.length).toBe(0);
+});
+
+
+

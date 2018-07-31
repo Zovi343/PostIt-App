@@ -1,4 +1,4 @@
-import { addArticle, addLike, commentArticle, editArticle, removeArticle, removeComment } from '../../actions/articlesActions';
+import { addArticle, addLike, commentArticle, editArticle, removeArticle, removeComment, removeLike } from '../../actions/articlesActions';
 
 test('should create addArticle action object', () => {
     const article = {
@@ -76,6 +76,17 @@ test('should create addLike action object', () => {
     const action = addLike(id, userId);
     expect(action).toEqual({
         type: 'ADD_LIKE',
+        id, 
+        userId
+    })
+});
+
+test('should create removeLike action object', () => {
+    const id = '123abc';
+    const userId = 'someId';
+    const action = removeLike(id, userId);
+    expect(action).toEqual({
+        type: 'REMOVE_LIKE',
         id, 
         userId
     })

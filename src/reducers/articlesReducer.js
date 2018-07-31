@@ -51,6 +51,16 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return article
                 }
             });
+        case 'REMOVE_LIKE':
+            return state.map((article) => {
+                if (article.id === action.id) {
+                    const newArticle = Object.assign({}, article);
+                    newArticle.likes = article.likes.filter((like) => like !== action.userId);
+                    return newArticle;
+                } else {
+                    return article
+                }
+            });
         default:
             return state;
     }
