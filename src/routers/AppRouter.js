@@ -2,20 +2,21 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 import AddArticle from '../components/AddArticle';
+import ArticleList from '../components/ArticleList.js';
+import EditArticle from '../components/EditArticle';
 import Header from '../components/Header'
 import MainPage from '../components/MainPage';
 import NotFoundPage from '../components/NotFoundPage';
 import ViewArticle from '../components/ViewArticle'
-import EditArticle from '../components/EditArticle';
  
 export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
     <div>
-    <Header />
+    <MainPage />
       <Switch>
-        <Route path="/" component={MainPage} exact={true} />
+        <Route path="/" component={ArticleList} exact={true}/>
         <Route path="/create" component={AddArticle} />
         <Route path="/view/:id" component={ViewArticle} />
         <Route path="/edit/:id" component={EditArticle} />
