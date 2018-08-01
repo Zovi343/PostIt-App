@@ -17,7 +17,8 @@ export const startSignUp = (userData) => {
             };
             dispatch(storeUser(newUser))
         } catch (e) {
-            console.log('Error startSignUp', e);
+            //login property here helps me determine on which form I should render error
+            dispatch(apiError({error:'User with this name already exists.' ,login: false}))
         }
     };
 };
@@ -25,7 +26,7 @@ export const startSignUp = (userData) => {
 //Loging In
 export const startLogin = (userData) => {
     return async (dispatch) => {
-        const response = await axios.post( '/user/login', {
+       try { const response = await axios.post( '/user/login', {
             "name": userData.name,
             "password": userData.password
         });
@@ -35,13 +36,23 @@ export const startLogin = (userData) => {
         token: response.headers["x-auth"]
         };
         dispatch(storeUser(newUser))
-    }
-}
+        } catch (e) {
+            //login property here helps me determine on which form I should render error
+            dispatch(apiError({error:'Wrong name or password.', login: true}))
+        }
+    };
+};
 
 //Storing User afer startSignUp or startLogin
 export const storeUser = (user) => ({
     type: 'STORE_USER',
     user
+});
+
+//Handling 400 bad request sent back from server when wrong data is passed in
+export const apiError = (error) => ({
+    type: 'API_ERROR',
+    error
 });
 
 //startLogout
@@ -54,9 +65,9 @@ export const startLogout = (userToken) => {
         });
         console.log(response.status);
         dispatch(removeUser())
-    }
-}
+    };
+};
 
 export const removeUser = () => ({
     type: 'REMOVE_USER'
-})
+});

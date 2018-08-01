@@ -51,6 +51,7 @@ class SingUpForm extends React.Component {
                     <input onChange={this.onPasswordAgainChange} placeholder="Password Again" type="text" value={this.state.passwordAgain} required/>
                     <input type="submit" value="Sign Up" />
                     { this.state.error && <p>{this.state.error}</p> }
+                    { (this.props.authFailed && !this.props.authFailed.login ) && <p>{this.props.authFailed.error}</p> }
                 </form>
                 <p>OR</p>
                 <button onClick={this.props.changeForm}>Login</button>

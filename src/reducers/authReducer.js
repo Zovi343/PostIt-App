@@ -4,7 +4,9 @@ export default (state = {}, action) => {
         case 'STORE_USER':
             return action.user;
         case 'REMOVE_USER':
-            return {}
+            return {};
+        case 'API_ERROR':
+            return { authFailed: action.error}
         default:
             return state;
     }

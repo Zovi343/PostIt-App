@@ -7,6 +7,7 @@ import { startSignUp, startLogin, startLogout } from '../actions/auth'
 
 class UserSection extends React.Component {
     state = {
+        //this determines on which form I am currently
         login: true
     }
     changeForm = () => {
@@ -16,7 +17,7 @@ class UserSection extends React.Component {
         this.props.startLogout(this.props.user.token);
     }
     onSubmitLogin = (userData) => {
-        this.props.startLogin(userData);
+        this.props.startLogin(userData)
     }
     onSubmitSignUp = (userData) => {
         this.props.startSignUp(userData);
@@ -25,9 +26,9 @@ class UserSection extends React.Component {
         if(!!this.props.user.name) {
             return <LoggedIn onLogout={this.onLogout} />
         } else if (this.state.login) {
-            return <LoginForm changeForm={this.changeForm} onSubmit={this.onSubmitLogin}/>
+            return <LoginForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitLogin}/>
         } else {
-            return <SignUpForm changeForm={this.changeForm} onSubmit={this.onSubmitSignUp}/>
+            return <SignUpForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitSignUp}/>
         }
     }
     render() {
@@ -41,7 +42,8 @@ class UserSection extends React.Component {
     }
 };
 const mapStateToProps = (state) => ({
-    user: state.auth
+    user: state.auth,
+    authFailed: state.auth.authFailed
 });
 
 const mapDispatchToProps = (dispatch) => ({

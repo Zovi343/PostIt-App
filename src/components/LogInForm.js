@@ -33,6 +33,7 @@ class LoginForm extends React.Component {
                     <input onChange={this.onPasswordChange} placeholder="Password" type="text" value={this.state.password} required/>
                     <input type="submit" value="Login" />
                     { this.state.error && <p>{this.state.error}</p> }
+                    { (this.props.authFailed && this.props.authFailed.login )&& <p>{this.props.authFailed.error}</p> }
                 </form>
                 <p>OR</p>
                 <button onClick={this.props.changeForm}>Sign Up!</button>
