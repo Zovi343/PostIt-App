@@ -1,26 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import LogInForm from './LogInForm';
+import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
-import { startSignUp } from '../actions/auth'
+import LoggedIn from './LoggedIn';
+import { startSignUp, startLogin } from '../actions/auth'
 
 class UserSection extends React.Component {
     state = {
-        logIn: false
+        login: true
+    }
+    changeForm = () => {
+        this.state.login ? this.setState(() => ({ login: false})) : this.setState(() => ({ login: true}));
+    }
+    onSubmitLogin = (userData) => {
+        this.props.startLogin(userData);
     }
     onSubmitSignUp = (userData) => {
         this.props.startSignUp(userData);
+    }
+    renderCorrectPart = () => {
+        if(!!this.props.user.name) {
+            return <LoggedIn />
+        } else if (this.state.login) {
+            return <LoginForm onSubmit={this.onSubmitLogin}/>
+        } else {
+            return <SignUpForm onSubmit={this.onSubmitLSignUp}/>
+        }
     }
     render() {
         return (
             <div>
                 {  
-                    this.state.logIn ? (
-                        <LogInForm />
-                    ) : (
-                        <SignUpForm onSubmit={this.onSubmitSignUp} />
-                    )
+                    this.renderCorrectPart()
                 }
+                <p>OR</p>
+                <button onClick={this.changeForm}>{this.state.login ? 'Sign Up!' : 'Login'}</button>
             </div>
         )
     }
@@ -30,7 +44,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    startSignUp: (user) => dispatch(startSignUp(user))
+    startSignUp: (userData) => dispatch(startSignUp(userData)),
+    startLogin: (userData) => dispatch(startLogin(userData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSection);

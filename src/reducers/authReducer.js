@@ -1,7 +1,7 @@
 
 export default (state = {}, action) => {
     switch(action.type) {
-        case 'SIGN_UP':
+        case 'STORE_USER':
             return action.user;
         default:
             return state;
