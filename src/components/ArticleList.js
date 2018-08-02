@@ -6,7 +6,7 @@ export const ArticleList = (props) => (
     <div>
         <ol>
             {
-                props.articles.map((article) => <ArticleListItem key={article.id} {...article} />)
+                props.articles.map((article) => <ArticleListItem key={article._id} {...article} />)
             }
         </ol>
     </div>

@@ -3,8 +3,8 @@ import { IoIosHeart, IoIosChatboxes } from "react-icons/io";
 import { Link } from 'react-router-dom';
 
 
-const ArticleListItem = ({ id, title, createdAt, comments, likes}) => (
-    <Link to={`view/${id}`}>
+const ArticleListItem = ({ _id, title, createdAt, comments, likes}) => (
+    <Link to={`view/${_id}`}>
         <p>{title}</p>
         <p>{createdAt}</p>
         <p> <IoIosHeart /> {likes.length}</p>

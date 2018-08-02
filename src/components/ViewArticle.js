@@ -9,14 +9,14 @@ import { addLike ,commentArticle, removeComment } from '../actions/articlesActio
 
 export class ViewArticle extends React.Component {
     onSubmit = (comment) => {
-        this.props.commentArticle(this.props.article.id ,comment);
+        this.props.commentArticle(this.props.article._id ,comment);
     }
     onClickDeleteComment = (commentId) => {
-        this.props.removeComment(this.props.article.id, commentId);
+        this.props.removeComment(this.props.article._id, commentId);
     }
     onClickLike = () => {
         const userId = uuid();
-        this.props.addLike( this.props.article.id ,userId);
+        this.props.addLike( this.props.article._id ,userId);
     }
     render() {
         return (
@@ -24,7 +24,7 @@ export class ViewArticle extends React.Component {
                 {
                     !!this.props.article ? (
                         <div>
-                            <Link to={`/edit/${this.props.article.id}`}>Edit Article</Link>
+                            <Link to={`/edit/${this.props.article._id}`}>Edit Article</Link>
                             <h2>{this.props.article.title}</h2>
                             <p>{this.props.article.createdAt}</p>
                             <p>{this.props.article.text}</p>
@@ -42,7 +42,7 @@ export class ViewArticle extends React.Component {
 };
 
 const mapStateToProps = (state, props) =>({
-    article: state.articles.find((article) => article.id === props.match.params.id)
+    article: state.articles.find((article) => article._id === props.match.params.id)
 });
 
 const mapDispatchToProps = (dispatch) => ({
