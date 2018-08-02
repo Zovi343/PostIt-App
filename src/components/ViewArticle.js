@@ -26,6 +26,7 @@ export class ViewArticle extends React.Component {
                         <div>
                             <Link to={`/edit/${this.props.article._id}`}>Edit Article</Link>
                             <h2>{this.props.article.title}</h2>
+                            <p>{this.props.article.creator}</p>
                             <p>{this.props.article.createdAt}</p>
                             <p>{this.props.article.text}</p>
                             <CommentArticle onSubmit={this.onSubmit} />
