@@ -15,6 +15,7 @@ export const startSignUp = (userData) => {
             name: response.data.user.name,
             token: response.headers["x-auth"]
             };
+            sessionStorage.setItem('token', newUser.token);
             dispatch(storeUser(newUser))
         } catch (e) {
             //login property here helps me determine on which form I should render error
@@ -26,22 +27,48 @@ export const startSignUp = (userData) => {
 //Loging In
 export const startLogin = (userData) => {
     return async (dispatch) => {
-       try { const response = await axios.post( '/user/login', {
-            "name": userData.name,
-            "password": userData.password
-        });
-        const newUser = {
-        id: response.data.user._id,
-        name: response.data.user.name,
-        token: response.headers["x-auth"]
-        };
-        dispatch(storeUser(newUser))
+       try { 
+            const response = await axios.post( '/user/login', {
+                "name": userData.name,
+                "password": userData.password
+            });
+            const newUser = {
+            id: response.data.user._id,
+            name: response.data.user.name,
+            token: response.headers["x-auth"]
+            };
+            sessionStorage.setItem('token', newUser.token);
+            dispatch(storeUser(newUser))
         } catch (e) {
             //login property here helps me determine on which form I should render error
             dispatch(apiError({error:'Wrong name or password.', login: true}))
         }
     };
 };
+
+// getting user data when he was already logged in
+export const getUser = (userToken) => {
+    return async (dispatch) => {
+        try { 
+            const response = await axios({
+                method: 'get',
+                url: '/user/me',
+                headers: {'x-auth': userToken}
+            });
+            console.log(response);
+            const newUser = {
+            id: response.data.user._id,
+            name: response.data.user.name,
+            token: userToken
+            };
+            // I don't need here to setItem in sessionStorage because it is already set
+            dispatch(storeUser(newUser))
+         } catch (e) {
+             //login property here helps me determine on which form I should render error
+             console.log('Eror get user', e);
+         }
+     }; 
+}   
 
 //Storing User afer startSignUp or startLogin
 export const storeUser = (user) => ({
@@ -63,7 +90,7 @@ export const startLogout = (userToken) => {
             url: '/user/logout',
             headers: {'x-auth': userToken}
         });
-        console.log(response.status);
+        sessionStorage.removeItem('token');
         dispatch(removeUser())
     };
 };
