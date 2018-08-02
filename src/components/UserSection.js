@@ -14,6 +14,10 @@ class UserSection extends React.Component {
         this.state.login ? this.setState(() => ({ login: false})) : this.setState(() => ({ login: true}));
     }
     onLogout = () => {
+        //this here ensures that user gets always redirected to the login section when logout(and not to the signup section)
+        this.setState(() => ({
+            login: true
+        }));
         this.props.startLogout(this.props.user.token);
     }
     onSubmitLogin = (userData) => {
