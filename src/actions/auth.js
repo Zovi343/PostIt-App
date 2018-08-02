@@ -15,7 +15,8 @@ export const startSignUp = (userData) => {
             name: response.data.user.name,
             token: response.headers["x-auth"]
             };
-            sessionStorage.setItem('token', newUser.token);
+
+            sessionStorage.setItem('user', JSON.stringify(newUser));
             dispatch(storeUser(newUser))
         } catch (e) {
             //login property here helps me determine on which form I should render error
@@ -37,7 +38,8 @@ export const startLogin = (userData) => {
             name: response.data.user.name,
             token: response.headers["x-auth"]
             };
-            sessionStorage.setItem('token', newUser.token);
+
+            sessionStorage.setItem('user', JSON.stringify(newUser));
             dispatch(storeUser(newUser))
         } catch (e) {
             //login property here helps me determine on which form I should render error
@@ -45,30 +47,6 @@ export const startLogin = (userData) => {
         }
     };
 };
-
-// getting user data when he was already logged in
-export const getUser = (userToken) => {
-    return async (dispatch) => {
-        try { 
-            const response = await axios({
-                method: 'get',
-                url: '/user/me',
-                headers: {'x-auth': userToken}
-            });
-            console.log(response);
-            const newUser = {
-            id: response.data.user._id,
-            name: response.data.user.name,
-            token: userToken
-            };
-            // I don't need here to setItem in sessionStorage because it is already set
-            dispatch(storeUser(newUser))
-         } catch (e) {
-             //login property here helps me determine on which form I should render error
-             console.log('Eror get user', e);
-         }
-     }; 
-}   
 
 //Storing User afer startSignUp or startLogin
 export const storeUser = (user) => ({
@@ -90,7 +68,7 @@ export const startLogout = (userToken) => {
             url: '/user/logout',
             headers: {'x-auth': userToken}
         });
-        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('user');
         dispatch(removeUser())
     };
 };

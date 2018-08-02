@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
-import { startSignUp, startLogin, startLogout, getUser } from '../actions/auth'
+import { startSignUp, startLogin, startLogout, storeUser } from '../actions/auth'
 
 class UserSection extends React.Component {
     state = {
@@ -14,9 +14,9 @@ class UserSection extends React.Component {
         this.state.login ? this.setState(() => ({ login: false})) : this.setState(() => ({ login: true}));
     };
     componentWillMount() {
-       const userToken = sessionStorage.getItem('token')
-       if (userToken) {
-           this.props.getUser(userToken);
+       const user = JSON.parse(sessionStorage.getItem('user'));
+       if (user) {
+           this.props.storeUser(user);
        }
     };
     onLogout = () => {
@@ -33,9 +33,8 @@ class UserSection extends React.Component {
         this.props.startSignUp(userData);
     };
     renderCorrectPart = () => {
-        //second thing in OR operator in first if statement ensures that LoginForm doesn't get rendered before LoggedIn section(it would render there only for fraction of a second)
-        if(!!this.props.user.name || !!sessionStorage.getItem('token')) {
-            return <LoggedIn onLogout={this.onLogout} />
+        if(!!this.props.user.name) {
+            return <LoggedIn name={this.props.user.name} onLogout={this.onLogout} />
         } else if (this.state.login) {
             return <LoginForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitLogin}/>
         } else {
@@ -59,7 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
     startSignUp: (userData) => dispatch(startSignUp(userData)),
     startLogin: (userData) => dispatch(startLogin(userData)),
     startLogout: (userToken) => dispatch(startLogout(userToken)),
-    getUser: (userToken) => dispatch(getUser(userToken))
+    storeUser: (userToken) => dispatch(storeUser(userToken))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSection);
