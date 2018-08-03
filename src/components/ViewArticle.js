@@ -10,13 +10,24 @@ import { addLike ,commentArticle, removeComment } from '../actions/articlesActio
 export class ViewArticle extends React.Component {
     onSubmit = (comment) => {
         this.props.commentArticle(this.props.article._id ,comment);
-    }
+    };
     onClickDeleteComment = (commentId) => {
         this.props.removeComment(this.props.article._id, commentId);
-    }
+    };
     onClickLike = () => {
         const userId = uuid();
         this.props.addLike( this.props.article._id ,userId);
+    };
+    //this ensures that only user which owns article will be able to edit it 
+    editingAllowed = () => {
+        if (this.props.article._creatorId === this.props.userId) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+    onClickEdit = () => {
+        this.props.history.push(`/edit/${this.props.article._id}`)
     }
     render() {
         return (
@@ -24,7 +35,7 @@ export class ViewArticle extends React.Component {
                 {
                     !!this.props.article ? (
                         <div>
-                            <Link to={`/edit/${this.props.article._id}`}>Edit Article</Link>
+                            <button onClick={this.onClickEdit} disabled={this.editingAllowed()}>Edit Article</button>
                             <h2>{this.props.article.title}</h2>
                             <p>{this.props.article.creator}</p>
                             <p>{this.props.article.createdAt}</p>
@@ -43,6 +54,7 @@ export class ViewArticle extends React.Component {
 };
 
 const mapStateToProps = (state, props) =>({
+    userId: state.auth.id,
     article: state.articles.find((article) => article._id === props.match.params.id)
 });
 
