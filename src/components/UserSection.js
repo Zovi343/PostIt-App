@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
-import { startSignUp, startLogin, startLogout, storeUser } from '../actions/auth'
+import { startSignUp, startLogin, startLogout } from '../actions/auth'
 
 class UserSection extends React.Component {
     state = {
@@ -12,12 +12,6 @@ class UserSection extends React.Component {
     };
     changeForm = () => {
         this.state.login ? this.setState(() => ({ login: false})) : this.setState(() => ({ login: true}));
-    };
-    componentWillMount() {
-       const user = JSON.parse(sessionStorage.getItem('user'));
-       if (user) {
-           this.props.storeUser(user);
-       }
     };
     onLogout = () => {
         //this here ensures that user gets always redirected to the login section when logout(and not to the signup section)
@@ -58,7 +52,6 @@ const mapDispatchToProps = (dispatch) => ({
     startSignUp: (userData) => dispatch(startSignUp(userData)),
     startLogin: (userData) => dispatch(startLogin(userData)),
     startLogout: (userToken) => dispatch(startLogout(userToken)),
-    storeUser: (userToken) => dispatch(storeUser(userToken))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSection);

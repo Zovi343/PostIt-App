@@ -16,7 +16,7 @@ export const startSignUp = (userData) => {
             token: response.headers["x-auth"]
             };
 
-            sessionStorage.setItem('user', JSON.stringify(newUser));
+            sessionStorage.setItem('token', newUser.token);
             dispatch(storeUser(newUser))
         } catch (e) {
             //login property here helps me determine on which form I should render error
@@ -39,7 +39,7 @@ export const startLogin = (userData) => {
             token: response.headers["x-auth"]
             };
 
-            sessionStorage.setItem('user', JSON.stringify(newUser));
+            sessionStorage.setItem('token', newUser.token);
             dispatch(storeUser(newUser))
         } catch (e) {
             //login property here helps me determine on which form I should render error
@@ -47,6 +47,29 @@ export const startLogin = (userData) => {
         }
     };
 };
+
+//get user on page refresh
+export const getUser = (userToken) => {
+    return async (dispatch) => {
+        try { 
+             const response = await axios({
+                method: 'get',
+                url: '/user/me',
+                headers: {'x-auth': userToken}
+            });
+             const newUser = {
+             id: response.data.user._id,
+             name: response.data.user.name,
+             token: userToken
+             };
+ 
+             dispatch(storeUser(newUser))
+         } catch (e) {
+             //login property here helps me determine on which form I should render error
+             console.log('Error in getUser:', e);
+         }
+     };
+}
 
 //Storing User afer startSignUp or startLogin
 export const storeUser = (user) => ({
@@ -68,7 +91,7 @@ export const startLogout = (userToken) => {
             url: '/user/logout',
             headers: {'x-auth': userToken}
         });
-        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('token');
         dispatch(removeUser())
     };
 };
