@@ -13,10 +13,7 @@ export default ( state = articlesReducerDefaultState, action) => {
         case 'EDIT_ARTICLE':
             return state.map((article) => {
                 if (article._id === action.id) {
-                    return {
-                        ...article,
-                        ...action.updates
-                    }
+                    return action.updatedArticle
                 } else {
                     return article
                 }

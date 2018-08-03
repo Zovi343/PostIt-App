@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ArticleForm from './ArticleForm';
-import { editArticle, removeArticle } from '../actions/articlesActions';
+import { startEditArticle, removeArticle } from '../actions/articlesActions';
 
 export class EditArticle extends React.Component {
     onSubmit = (article) => {
-        this.props.editArticle(this.props.article._id, article);
+        this.props.startEditArticle(this.props.article._id, article);
         this.props.history.push('/');
     };
     onRemoveClick = () => {
@@ -37,7 +37,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    editArticle: (id, article) => dispatch(editArticle(id, article)),
+    startEditArticle: (id, article) => dispatch(startEditArticle(id, article)),
     removeArticle: (id) => dispatch(removeArticle(id))
 });
 
