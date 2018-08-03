@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import uuid from 'uuid';
-import { Link } from 'react-router-dom';
 import CommentArticle from './CommentArticle';
 import CommentList from './CommentList';
 import { IoIosHeart } from "react-icons/io";
-import { addLike ,commentArticle, removeComment } from '../actions/articlesActions'; 
+import { addLike , startCommentArticle, removeComment } from '../actions/articlesActions'; 
 
 export class ViewArticle extends React.Component {
     onSubmit = (comment) => {
-        this.props.commentArticle(this.props.article._id ,comment);
+        this.props.startCommentArticle(this.props.article._id ,comment);
     };
     onClickDeleteComment = (commentId) => {
         this.props.removeComment(this.props.article._id, commentId);
@@ -60,7 +59,7 @@ const mapStateToProps = (state, props) =>({
 
 const mapDispatchToProps = (dispatch) => ({
    addLike: (id, userId) => dispatch(addLike(id, userId)),
-   commentArticle: (id, comment) => dispatch(commentArticle(id, comment)),
+   startCommentArticle: (id, comment) => dispatch(startCommentArticle(id, comment)),
    removeComment: (id, commentId) => dispatch(removeComment(id, commentId))
 });
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'uuid';
 import moment from 'moment';
 
 class CommentArticle extends React.Component {
@@ -21,8 +20,7 @@ class CommentArticle extends React.Component {
                 error: 'Yout comment must contain at least 3 characters.'
             }));
         } else {
-            const id = uuid();
-            this.props.onSubmit({comment: this.state.comment, createdAt: this.state.createdAt, id});
+            this.props.onSubmit({comment: this.state.comment, createdAt: this.state.createdAt});
             this.setState(() =>  ({
                 comment: '',
                 error: ''

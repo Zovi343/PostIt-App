@@ -34,7 +34,7 @@ export default ( state = articlesReducerDefaultState, action) => {
             return state.map((article) => {
                 if (article._id === action.id) {
                     const newArticle = Object.assign({}, article)
-                    newArticle.comments = article.comments.filter((comment) => comment.id !== action.commentId);
+                    newArticle.comments = article.comments.filter((comment) => comment._id !== action.commentId);
                     return newArticle;
                 } else {
                     return article

@@ -6,7 +6,7 @@ const CommentList = (props) => (
             {
                 props.comments.map((comment) => <CommentListItem 
                                                 onClickDeleteComment={props.onClickDeleteComment} 
-                                                key={comment.id} 
+                                                key={comment._id} 
                                                 {...comment}/>
                                             )
             }
