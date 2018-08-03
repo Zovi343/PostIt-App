@@ -4,10 +4,10 @@ import createHistory from 'history/createBrowserHistory';
 import AddArticle from '../components/AddArticle';
 import ArticleList from '../components/ArticleList.js';
 import EditArticle from '../components/EditArticle';
-import Header from '../components/Header'
 import MainPage from '../components/MainPage';
 import NotFoundPage from '../components/NotFoundPage';
-import ViewArticle from '../components/ViewArticle'
+import ViewArticle from '../components/ViewArticle';
+import PrivateRoute from './PrivateRoute';
  
 export const history = createHistory();
 
@@ -17,9 +17,9 @@ const AppRouter = () => (
     <MainPage />
       <Switch>
         <Route path="/" component={ArticleList} exact={true}/>
-        <Route path="/create" component={AddArticle} />
+        <PrivateRoute path="/create" component={AddArticle} />
         <Route path="/view/:id" component={ViewArticle} />
-        <Route path="/edit/:id" component={EditArticle} />
+        <PrivateRoute path="/edit/:id" component={EditArticle} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>

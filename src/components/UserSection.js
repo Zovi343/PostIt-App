@@ -20,6 +20,7 @@ class UserSection extends React.Component {
             login: true
         }));
         this.props.startLogout(this.props.user.token);
+        //this  redirects the user in case he logs out while creating or edititng article
         if(window.location.href.includes('edit') || window.location.href.includes('create')){
             history.push('/');
         }
