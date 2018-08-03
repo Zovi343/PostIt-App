@@ -51,6 +51,18 @@ export const startEditArticle = (articleId, article) => {
     };
 };
 
+export const startRemoveArticle = (articleId) => {
+    return async (dispatch, getState) => {
+        const userToken = getState().auth.token;
+        const response = await axios({
+            method: 'delete',
+            url: `/article/${articleId}`,
+            headers: {'x-auth': userToken}
+
+        });
+        dispatch(removeArticle(response.data.removedArticle._id));
+    };
+};
 
 export const setArticles = (articles) => ({
     type: 'SET_ARTICLES',
