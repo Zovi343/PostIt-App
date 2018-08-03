@@ -96,6 +96,23 @@ export const startCommentArticle = (articleId, comment) => {
     };
 }
 
+export const startRemoveComment = (articleId, commentId) => {
+    return async (dispatch, getState) => {
+        try {
+            const userToken = getState().auth.token;
+            const response = await axios({
+                method: 'delete',
+                url: `/article/${articleId}/comment/${commentId}`,
+                headers: {'x-auth': userToken}
+
+            });
+            dispatch(removeComment(articleId, commentId));
+        } catch (e) {
+            console.log('Error in startRemoveComment', e);
+        }
+    };
+}
+
 export const setArticles = (articles) => ({
     type: 'SET_ARTICLES',
     articles

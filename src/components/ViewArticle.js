@@ -4,14 +4,14 @@ import uuid from 'uuid';
 import CommentArticle from './CommentArticle';
 import CommentList from './CommentList';
 import { IoIosHeart } from "react-icons/io";
-import { addLike , startCommentArticle, removeComment } from '../actions/articlesActions'; 
+import { addLike , startCommentArticle, startRemoveComment } from '../actions/articlesActions'; 
 
 export class ViewArticle extends React.Component {
     onSubmit = (comment) => {
         this.props.startCommentArticle(this.props.article._id ,comment);
     };
     onClickDeleteComment = (commentId) => {
-        this.props.removeComment(this.props.article._id, commentId);
+        this.props.startRemoveComment(this.props.article._id, commentId);
     };
     onClickLike = () => {
         const userId = uuid();
@@ -41,7 +41,7 @@ export class ViewArticle extends React.Component {
                             <p>{this.props.article.text}</p>
                             <CommentArticle onSubmit={this.onSubmit} />
                             <button onClick={this.onClickLike}> <IoIosHeart /></button>
-                            <CommentList onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>
+                            <CommentList userId={this.props.userId} onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>
                         </div> 
                     ) : (
                         <h2> This article doesn't exist! </h2>
@@ -60,7 +60,7 @@ const mapStateToProps = (state, props) =>({
 const mapDispatchToProps = (dispatch) => ({
    addLike: (id, userId) => dispatch(addLike(id, userId)),
    startCommentArticle: (id, comment) => dispatch(startCommentArticle(id, comment)),
-   removeComment: (id, commentId) => dispatch(removeComment(id, commentId))
+   startRemoveComment: (id, commentId) => dispatch(startRemoveComment(id, commentId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ViewArticle);
