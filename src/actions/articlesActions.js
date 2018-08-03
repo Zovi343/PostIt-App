@@ -1,6 +1,5 @@
 import uuid from 'uuid';
 import axios from 'axios';
-import ArticleForm from '../components/ArticleForm';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
@@ -17,11 +16,28 @@ export const startAddArticle = (article) => {
             },
             headers: {'x-auth': userToken}
         });
-        console.log(response);
+
         dispatch(addArticle(response.data.article));
 
     };
 };
+
+export const startSetArticles = () => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get('/articles');
+            dispatch(setArticles(response.data.allArticles));
+            
+        } catch (e) {
+            console.log('Error startSetArticles', e);
+        }
+    }
+}
+
+export const setArticles = (articles) => ({
+    type: 'SET_ARTICLES',
+    articles
+})
 
 export const addArticle = (article) => ({
     type: 'ADD_ARTICLE',

@@ -3,6 +3,8 @@ const articlesReducerDefaultState = [];
 
 export default ( state = articlesReducerDefaultState, action) => {
     switch(action.type) {
+        case 'SET_ARTICLES':
+            return action.articles;
         case 'ADD_ARTICLE':
             return [
                 ...state,

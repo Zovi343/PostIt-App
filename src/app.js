@@ -6,7 +6,8 @@ import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
-import { getUser } from './actions/auth'
+import { getUser } from './actions/authActions';
+import { startSetArticles } from './actions/articlesActions';
 
 const store = configureStore();
 
@@ -19,15 +20,17 @@ const jsx = (
 ReactDOM.render(<p>Loading ... </p>, document.getElementById('app'));
 
 const renderApp = () => {
-  ReactDOM.render(jsx, document.getElementById('app'));
-}
+  store.dispatch(startSetArticles()).then(() => {
+    ReactDOM.render(jsx, document.getElementById('app'));
+  });
+};
 
 const userToken = sessionStorage.getItem('token');
 
 if(userToken) {
   store.dispatch(getUser(userToken)).then(() => {
     renderApp();
-  })
+  });
 } else {
   renderApp();
-}
+};

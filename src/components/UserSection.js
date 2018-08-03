@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
-import { startSignUp, startLogin, startLogout } from '../actions/auth'
+import { startSignUp, startLogin, startLogout } from '../actions/authActions'
 
 class UserSection extends React.Component {
     state = {
