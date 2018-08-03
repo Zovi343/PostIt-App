@@ -37,8 +37,8 @@ export class ViewArticle extends React.Component {
                         <div>
                             <button onClick={this.onClickEdit} disabled={this.editingAllowed()}>Edit Article</button>
                             <h2>{this.props.article.title}</h2>
-                            <p>{this.props.article.creator}</p>
-                            <p>{this.props.article.createdAt}</p>
+                            <p>Posted by:{this.props.article.creator} at: {this.props.article.createdAt}</p>
+                            {this.props.article.editedAt && <p>Edited at: {this.props.article.createdAt}</p>}
                             <p>{this.props.article.text}</p>
                             <CommentArticle onSubmit={this.onSubmit} />
                             <button onClick={this.onClickLike}> <IoIosHeart /></button>

@@ -42,12 +42,12 @@ export const startEditArticle = (articleId, article) => {
             url: `/article/${articleId}`, 
             data: {
                 "text": article.text,
-                "title": article.title
+                "title": article.title,
+                "editedAt": article.createdAt //it's called createdAt but it represents time when it was updated, the name is createdAt because I use same form for creating and updating article
             },
             headers: {'x-auth': userToken}
         });
         dispatch(editArticle(articleId, response.data.updatedArticle));
-
     };
 };
 
