@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
+import { history } from '../routers/AppRouter';
 import { startSignUp, startLogin, startLogout } from '../actions/authActions'
 
 class UserSection extends React.Component {
@@ -19,6 +20,9 @@ class UserSection extends React.Component {
             login: true
         }));
         this.props.startLogout(this.props.user.token);
+        if(window.location.href.includes('edit') || window.location.href.includes('create')){
+            history.push('/');
+        }
     };
     onSubmitLogin = (userData) => {
         this.props.startLogin(userData)
