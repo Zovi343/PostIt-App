@@ -111,7 +111,41 @@ export const startRemoveComment = (articleId, commentId) => {
             console.log('Error in startRemoveComment', e);
         }
     };
-}
+};
+
+export const startAddLike = (articleId ,userId) => {
+    return async (dispatch, getState) => {
+        try {
+            const userToken = getState().auth.token;
+            await axios({
+                method: 'post',
+                url: `/article/${articleId}/like`,
+                headers: {'x-auth': userToken}
+
+            });
+            dispatch(addLike( articleId, userId));
+        } catch (e) {
+            console.log('Error in startAddLike', e);
+        }
+    };
+};
+
+export const startRemoveLike = (articleId ,userId) => {
+    return async (dispatch, getState) => {
+        try {
+            const userToken = getState().auth.token;
+            await axios({
+                method: 'delete',
+                url: `/article/${articleId}/like`,
+                headers: {'x-auth': userToken}
+
+            });
+            dispatch(removeLike( articleId, userId));
+        } catch (e) {
+            console.log('Error in startRemoveLike', e);
+        }
+    };
+};
 
 export const setArticles = (articles) => ({
     type: 'SET_ARTICLES',

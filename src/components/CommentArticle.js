@@ -37,7 +37,7 @@ class CommentArticle extends React.Component {
                     value={this.state.comment}
                 >
                 </textarea>
-                <input type="submit" value="Comment" />
+                <input disabled={this.props.likeOrCommentAllowed} type="submit" value="Comment" />
             </form>
         );
     };

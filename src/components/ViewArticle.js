@@ -4,7 +4,7 @@ import uuid from 'uuid';
 import CommentArticle from './CommentArticle';
 import CommentList from './CommentList';
 import { IoIosHeart } from "react-icons/io";
-import { addLike , startCommentArticle, startRemoveComment } from '../actions/articlesActions'; 
+import { startAddLike, startRemoveLike , startCommentArticle, startRemoveComment } from '../actions/articlesActions'; 
 
 export class ViewArticle extends React.Component {
     onSubmit = (comment) => {
@@ -12,10 +12,6 @@ export class ViewArticle extends React.Component {
     };
     onClickDeleteComment = (commentId) => {
         this.props.startRemoveComment(this.props.article._id, commentId);
-    };
-    onClickLike = () => {
-        const userId = uuid();
-        this.props.addLike( this.props.article._id ,userId);
     };
     //this ensures that only user which owns article will be able to edit it 
     editingAllowed = () => {
@@ -27,7 +23,28 @@ export class ViewArticle extends React.Component {
     };
     onClickEdit = () => {
         this.props.history.push(`/edit/${this.props.article._id}`)
-    }
+    };
+    onClickLike = () => {
+        if (this.props.article.likes.includes(this.props.userId)){
+            this.props.startRemoveLike( this.props.article._id, this.props.userId);
+        } else {
+            this.props.startAddLike( this.props.article._id , this.props.userId);
+        }
+    };
+    likeStyle = () => {
+        if (this.props.article.likes.includes(this.props.userId)){
+            return { color: 'red' }
+        } else {
+            return { color: 'grey' }
+        }
+    };
+    likeOrCommentAllowed = () => {
+        if (!!this.props.userId){
+            return false
+        } else {
+            return true
+        }
+    };
     render() {
         return (
             <div>
@@ -39,8 +56,8 @@ export class ViewArticle extends React.Component {
                             <p>Posted by:{this.props.article.creator} at: {this.props.article.createdAt}</p>
                             {this.props.article.editedAt && <p>Edited at: {this.props.article.createdAt}</p>}
                             <p>{this.props.article.text}</p>
-                            <CommentArticle onSubmit={this.onSubmit} />
-                            <button onClick={this.onClickLike}> <IoIosHeart /></button>
+                            <CommentArticle likeOrCommentAllowed={this.likeOrCommentAllowed()} onSubmit={this.onSubmit} />
+                            <button disabled={this.likeOrCommentAllowed()}  onClick={this.onClickLike}> <IoIosHeart style={this.likeStyle()} /></button><p>Number of Likes: {this.props.article.likes.length}</p>
                             <CommentList userId={this.props.userId} onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>
                         </div> 
                     ) : (
@@ -58,7 +75,8 @@ const mapStateToProps = (state, props) =>({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-   addLike: (id, userId) => dispatch(addLike(id, userId)),
+   startAddLike: (id, userId) => dispatch(startAddLike(id, userId)),
+   startRemoveLike: (id, userId) => dispatch(startRemoveLike(id, userId)),
    startCommentArticle: (id, comment) => dispatch(startCommentArticle(id, comment)),
    startRemoveComment: (id, commentId) => dispatch(startRemoveComment(id, commentId))
 });
