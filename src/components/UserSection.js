@@ -4,7 +4,8 @@ import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
 import { history } from '../routers/AppRouter';
-import { startSignUp, startLogin, startLogout } from '../actions/authActions'
+import { startSignUp, startLogin, startLogout } from '../actions/authActions';
+import { setYourArticlesFilter, removeYourArticlesFilter } from '../actions/filterActions';
 
 class UserSection extends React.Component {
     state = {
@@ -20,6 +21,7 @@ class UserSection extends React.Component {
             login: true
         }));
         this.props.startLogout(this.props.user.token);
+        this.props.removeYourArticlesFilter(); //this removes filter so when log out user can actually see articles
         //this  redirects the user in case he logs out while creating or edititng article
         if(window.location.href.includes('edit') || window.location.href.includes('create')){
             history.push('/');
@@ -33,13 +35,20 @@ class UserSection extends React.Component {
     };
     renderCorrectPart = () => {
         if(!!this.props.user.name) {
-            return <LoggedIn name={this.props.user.name} onLogout={this.onLogout} />
+            return <LoggedIn filter={this.props.filter} handleFilter={this.handleFilter} name={this.props.user.name} onLogout={this.onLogout} />
         } else if (this.state.login) {
             return <LoginForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitLogin}/>
         } else {
             return <SignUpForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitSignUp}/>
         }
     };
+    handleFilter = () => {
+        if (this.props.filter){
+            this.props.removeYourArticlesFilter();
+        }else {
+            this.props.setYourArticlesFilter();
+        }
+    }
     render () {
         return (
             <div>
@@ -50,13 +59,16 @@ class UserSection extends React.Component {
 };
 const mapStateToProps = (state) => ({
     user: state.auth,
-    authFailed: state.auth.authFailed
+    authFailed: state.auth.authFailed,
+    filter: state.filter
 });
 
 const mapDispatchToProps = (dispatch) => ({
     startSignUp: (userData) => dispatch(startSignUp(userData)),
     startLogin: (userData) => dispatch(startLogin(userData)),
     startLogout: (userToken) => dispatch(startLogout(userToken)),
+    setYourArticlesFilter: () => dispatch(setYourArticlesFilter()),
+    removeYourArticlesFilter: () => dispatch(removeYourArticlesFilter())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSection);

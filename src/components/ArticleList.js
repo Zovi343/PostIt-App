@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ArticleListItem from './ArticleListItem';
+import yourArticlesFilter from '../selectors/yourArticlesFilter';
 
 export const ArticleList = (props) => (
     <div>
@@ -10,10 +11,10 @@ export const ArticleList = (props) => (
             }
         </ol>
     </div>
-)
+);
 
 const mapStateToProps = (state) => ({
-    articles: state.articles
-})
+    articles: state.filter ? yourArticlesFilter(state.articles, state.auth.id) : state.articles
+});
 
-export default connect(mapStateToProps)(ArticleList)
+export default connect(mapStateToProps)(ArticleList);
