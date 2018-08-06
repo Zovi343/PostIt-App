@@ -52,7 +52,7 @@ class UserSection extends React.Component {
     render () {
         return (
             <div>
-                { this.renderCorrectPart()  }
+                { this.props.networkError ? <h1>Server is down</h1> : this.renderCorrectPart()  }
             </div>
         );
     };
@@ -60,7 +60,8 @@ class UserSection extends React.Component {
 const mapStateToProps = (state) => ({
     user: state.auth,
     authFailed: state.auth.authFailed,
-    filter: state.filter
+    filter: state.filter,
+    networkError: state.networkError
 });
 
 const mapDispatchToProps = (dispatch) => ({

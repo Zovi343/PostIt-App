@@ -9,10 +9,18 @@ export const startSetArticles = () => {
             dispatch(setArticles(response.data.allArticles));
             
         } catch (e) {
-            console.log('Error startSetArticles', e);
+            console.log('Error in startSetArticles:', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetorkError());
+            }
         }
     };
 };
+
+// this action is called right above in the case that server is down it is handled by networkErrorReducer and also store in store in field networkError
+export const setNetorkError = () => ({
+    type: 'NETWORK_ERROR'
+})
 
 export const startAddArticle = (article) => {
     return async (dispatch, getState) => {
