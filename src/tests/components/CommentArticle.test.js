@@ -27,8 +27,7 @@ test('should call onSubmit when Submiting with correct data', () => {
     });
     expect(onSubmitSpy).toHaveBeenLastCalledWith({
         comment: value,
-        createdAt: '1.1.1970',
-        id: expect.any(String)
+        createdAt: '1.1.1970'
     })
 });
 

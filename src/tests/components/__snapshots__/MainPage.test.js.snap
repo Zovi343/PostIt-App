@@ -5,17 +5,5 @@ exports[`should render MainPage correctly 1`] = `
   <h1>
     PostIt!
   </h1>
-  <Link
-    replace={false}
-    to="/create"
-  >
-    AddArticle
-  </Link>
-  <Link
-    replace={false}
-    to="/"
-  >
-    Home
-  </Link>
 </div>
 `;
