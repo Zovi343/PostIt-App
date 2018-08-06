@@ -3,12 +3,13 @@
 exports[`should render CommentListItem correctly 1`] = `
 <li>
   <p>
+    Posted by: 
+     created at:
     1.1.1970
   </p>
-  <p>
-    Something to test?
-  </p>
+  <p />
   <button
+    disabled={false}
     onClick={[Function]}
   >
     Delete

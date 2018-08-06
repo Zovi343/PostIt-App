@@ -3,41 +3,56 @@
 exports[`should render ViewArticle correctly 1`] = `
 <div>
   <div>
-    <Link
-      replace={false}
-      to="/edit/1"
+    <button
+      disabled={true}
+      onClick={[Function]}
     >
       Edit Article
-    </Link>
+    </button>
     <h2>
       Breaking news
     </h2>
     <p>
+      Posted by:
+       at: 
       1.1.1970
     </p>
     <p>
       Political info
     </p>
     <CommentArticle
+      likeOrCommentAllowed={false}
       onSubmit={[Function]}
     />
     <button
+      disabled={false}
       onClick={[Function]}
     >
        
-      <Component />
+      <Component
+        style={
+          Object {
+            "color": "grey",
+          }
+        }
+      />
     </button>
+    <p>
+      Number of Likes: 
+      1
+    </p>
     <CommentList
       comments={
         Array [
           Object {
+            "_id": "1a",
             "comment": "Something to test?",
             "createdAt": "1.1.1970",
-            "id": "1a",
           },
         ]
       }
       onClickDeleteComment={[Function]}
+      userId="343"
     />
   </div>
 </div>

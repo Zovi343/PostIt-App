@@ -11,6 +11,7 @@ export const startSignUp = (userData) => {
                 "password": userData.password
             });
             const newUser = {
+            // user id is not stored _id (thah way I store it for articles and comments)
             id: response.data.user._id,
             name: response.data.user.name,
             token: response.headers["x-auth"]

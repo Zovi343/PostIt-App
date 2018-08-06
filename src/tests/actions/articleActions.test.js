@@ -1,7 +1,22 @@
-import { addArticle, addLike, commentArticle, editArticle, removeArticle, removeComment, removeLike } from '../../actions/articlesActions';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import axios from 'axios';
+import { addArticle, 
+        addLike, 
+        commentArticle, 
+        editArticle, 
+        removeArticle, 
+        removeComment, 
+        removeLike, 
+        setNetworkError } 
+from '../../actions/articlesActions';
+import articles from '../fixtures/articlesFixtures';
+
+
 
 test('should create addArticle action object', () => {
     const article = {
+        id: 'jndakjwDEF',
         likes: [],
         comments: [],
         title: 'test',
@@ -18,6 +33,11 @@ test('should create addArticle action object', () => {
     });
 });
 
+test('should create setNetworkError action', () => {
+    const action = setNetworkError();
+    expect(action).toEqual({ type: 'NETWORK_ERROR' })
+});
+
 
 test('should create editArticle action object', () => {
     const article = {
@@ -30,7 +50,7 @@ test('should create editArticle action object', () => {
     expect(action).toEqual({
         type: 'EDIT_ARTICLE',
         id,
-        updates: article
+        updatedArticle: article
     });
 });
 
@@ -78,7 +98,7 @@ test('should create addLike action object', () => {
         type: 'ADD_LIKE',
         id, 
         userId
-    })
+    });
 });
 
 test('should create removeLike action object', () => {
@@ -89,5 +109,5 @@ test('should create removeLike action object', () => {
         type: 'REMOVE_LIKE',
         id, 
         userId
-    })
+    });
 });

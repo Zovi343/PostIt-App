@@ -5,10 +5,12 @@ exports[`should render ArticleListItem correctly 1`] = `
   replace={false}
   to="view/1"
 >
-  <p>
+  <h3>
     Breaking news
-  </p>
+  </h3>
   <p>
+    Posted by: 
+     at: 
     1.1.1970
   </p>
   <p>

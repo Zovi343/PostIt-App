@@ -34,6 +34,7 @@ class UserSection extends React.Component {
         this.props.startSignUp(userData);
     };
     renderCorrectPart = () => {
+        // this checks if user exists
         if(!!this.props.user.name) {
             return <LoggedIn filter={this.props.filter} handleFilter={this.handleFilter} name={this.props.user.name} onLogout={this.onLogout} />
         } else if (this.state.login) {

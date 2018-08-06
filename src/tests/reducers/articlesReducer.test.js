@@ -18,19 +18,19 @@ test('should handle ADD_ARTICLE action', () => {
 test('should handle EDIT_ARTICLE action', () => {
     const action = {
         type: 'EDIT_ARTICLE',
-        id: articles[0].id,
-        updates: {
-            title: 'Updated!'
-        }
+        id: articles[0]._id,
+        updatedArticle: {
+            title: 'Updated!',
+        },
     }
     const state = articlesReducer(articles, action);
-    expect(state[0].title).toBe(action.updates.title);
+    expect(state[0].title).toBe(action.updatedArticle.title);
 });
 
 test('should handle REMOVE_ARTICLE action', () => {
     const action = {
         type: 'REMOVE_ARTICLE',
-        id: articles[0].id,
+        id: articles[0]._id,
     }
     const state = articlesReducer(articles, action);
     expect(state.length).toBe(2);
@@ -39,7 +39,7 @@ test('should handle REMOVE_ARTICLE action', () => {
 test('should handle COMMENT_ARTICLE action', () => {
     const action = {
         type: 'COMMENT_ARTICLE',
-        id: articles[2].id,
+        id: articles[2]._id,
         comment: {
             comment: 'Test comment',
             createdAt: '2.7.2018',
@@ -63,7 +63,7 @@ test('should handle REMOVE_COMMENT action', () => {
 test('should handle ADD_LIKE action', () => {
     const action = {
         type: 'ADD_LIKE',
-        id: articles[2].id,
+        id: articles[2]._id,
         userId: 'someId'
     }
     const state = articlesReducer(articles, action);
@@ -74,7 +74,7 @@ test('should handle ADD_LIKE action', () => {
 test('should handle REMOVE_LIKE action', () => {
     const action = {
         type: 'REMOVE_LIKE',
-        id: articles[0].id,
+        id: articles[0]._id,
         userId: articles[0].likes[0]
     }
     const state = articlesReducer(articles, action);

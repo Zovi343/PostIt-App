@@ -2,34 +2,36 @@
 
 exports[`should render EditArticle correctly 1`] = `
 <div>
-  <h2>
-    Editing Article
-  </h2>
-  <ArticleForm
-    article={
-      Object {
-        "comments": Array [
-          Object {
-            "comment": "Something to test?",
-            "createdAt": "1.1.1970",
-            "id": "1a",
-          },
-        ],
-        "createdAt": "1.1.1970",
-        "id": "1",
-        "likes": Array [
-          "someId",
-        ],
-        "text": "Political info",
-        "title": "Breaking news",
+  <div>
+    <h2>
+      Editing Article
+    </h2>
+    <ArticleForm
+      article={
+        Object {
+          "_id": "1",
+          "comments": Array [
+            Object {
+              "_id": "1a",
+              "comment": "Something to test?",
+              "createdAt": "1.1.1970",
+            },
+          ],
+          "createdAt": "1.1.1970",
+          "likes": Array [
+            "someId",
+          ],
+          "text": "Political info",
+          "title": "Breaking news",
+        }
       }
-    }
-    onSubmit={[Function]}
-  />
-  <button
-    onClick={[Function]}
-  >
-    Remove Article
-  </button>
+      onSubmit={[Function]}
+    />
+    <button
+      onClick={[Function]}
+    >
+      Remove Article
+    </button>
+  </div>
 </div>
 `;

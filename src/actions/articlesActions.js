@@ -11,14 +11,14 @@ export const startSetArticles = () => {
         } catch (e) {
             console.log('Error in startSetArticles:', e);
             if(e.message === 'Network Error'){
-                dispatch(setNetorkError());
+                dispatch(setNetworkError());
             }
         }
     };
 };
 
 // this action is called right above in the case that server is down it is handled by networkErrorReducer and also store in store in field networkError
-export const setNetorkError = () => ({
+export const setNetworkError = () => ({
     type: 'NETWORK_ERROR'
 })
 
