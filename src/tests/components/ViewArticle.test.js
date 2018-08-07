@@ -88,6 +88,3 @@ test('liking should be disabled if user does not exists', () => {
     );
     expect(wrapper.find('button').at(0).props().disabled).toBe(true);
 });
-
-
-//I will also need test for startRemoveLike
