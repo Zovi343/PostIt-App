@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setNetworkError } from './articlesActions';
 
 axios.defaults.baseURL = 'http://localhost:3000';
 
@@ -20,8 +21,12 @@ export const startSignUp = (userData) => {
             sessionStorage.setItem('token', newUser.token);
             dispatch(storeUser(newUser))
         } catch (e) {
+            console.log('Error in startSignUp:', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
             //login property here helps me determine on which form I should render error
-            dispatch(apiError({error:'User with this name already exists.' ,login: false}))
+            dispatch(apiError({error:'User with this name already exists.' ,login: false}));
         }
     };
 };
@@ -43,8 +48,12 @@ export const startLogin = (userData) => {
             sessionStorage.setItem('token', newUser.token);
             dispatch(storeUser(newUser))
         } catch (e) {
+            console.log('Error in startLogin:', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
             //login property here helps me determine on which form I should render error
-            dispatch(apiError({error:'Wrong name or password.', login: true}))
+            dispatch(apiError({error:'Wrong name or password.', login: true}));
         }
     };
 };
@@ -68,9 +77,32 @@ export const getUser = (userToken) => {
          } catch (e) {
              //login property here helps me determine on which form I should render error
              console.log('Error in getUser:', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
          }
      };
 }
+
+//startLogout
+export const startLogout = (userToken) => {
+    return async (dispatch) => {
+    try {
+        const response = await axios({
+             method: 'delete',
+             url: '/user/logout',
+             headers: {'x-auth': userToken}
+         });
+         sessionStorage.removeItem('token');
+         dispatch(removeUser());
+    } catch (e) {
+        console.log('Error in startLogout:', e);
+        if(e.message === 'Network Error'){
+            dispatch(setNetworkError());
+        }
+    }
+    };
+};
 
 //Storing User afer startSignUp or startLogin
 export const storeUser = (user) => ({
@@ -83,19 +115,6 @@ export const apiError = (error) => ({
     type: 'API_ERROR',
     error
 });
-
-//startLogout
-export const startLogout = (userToken) => {
-    return async (dispatch) => {
-       const response = await axios({
-            method: 'delete',
-            url: '/user/logout',
-            headers: {'x-auth': userToken}
-        });
-        sessionStorage.removeItem('token');
-        dispatch(removeUser())
-    };
-};
 
 export const removeUser = () => ({
     type: 'REMOVE_USER'

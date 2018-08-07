@@ -18,6 +18,7 @@ import articles from '../fixtures/articlesFixtures';
 
 
 const createMockStore = configureStore([thunk]);
+const defaultState = { auth: { token: 'QQQ888'}};
 
 test('startSetArticle make axios.get request and dispatch setArticles action', async () => {
     const store = createMockStore({});
@@ -49,12 +50,24 @@ test('startSetArticles should dispatch setNetworkError if server is down',async 
 });
 
 test('startAddArticle should call axios and dispatch addArticle action', async () => {
-    const store = createMockStore({ auth: { token: 'QQQ888'}});
-    axios.mockImplementationOnce(() => 
-    Promise.resolve(articles[0])
+    const store = createMockStore(defaultState);
+    axios.post.mockImplementationOnce(() => 
+    Promise.resolve({
+        data: {
+            article: articles[0]
+        }
+    })
     );
     await store.dispatch(startAddArticle(articles[0]));
-    expect(axios).toHaveBeenCalled(); // <-- tu som skoncil treba asi prepisat axios calls in articlesActions
+    expect(axios.post).toHaveBeenLastCalledWith('/article',{
+        "createdAt": articles[0].createdAt,
+        "text": articles[0].text,
+        "title": articles[0].title
+    },{
+    headers: {'x-auth': defaultState.auth.token}
+    });
+    const actions = store.getActions();
+    expect(actions[0]).toEqual(addArticle(articles[0]))
 });
 
 test('should create setNetworkError action object', () => {

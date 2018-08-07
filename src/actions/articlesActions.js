@@ -9,9 +9,10 @@ export const startSetArticles = () => {
             dispatch(setArticles(response.data.allArticles));
             
         } catch (e) {
-            console.log('Error in startSetArticles:', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
+            } else {
+                console.log('Error in startSetArticles:', e); 
             }
         }
     };
@@ -26,20 +27,21 @@ export const startAddArticle = (article) => {
     return async (dispatch, getState) => {
        try {
             const userToken = getState().auth.token
-            const response = await axios({
-                method: 'post',
-                url: '/article', 
-                data: {
+            const response = await axios.post('/article',{
                     "createdAt": article.createdAt,
                     "text": article.text,
                     "title": article.title
-                },
+                },{
                 headers: {'x-auth': userToken}
-            });
+                }
+            );
 
             dispatch(addArticle(response.data.article));
         } catch (e) {
-            console.log('Error in startAddArticle:', e)
+            console.log('Error in startAddArticle:', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 };
@@ -61,6 +63,9 @@ export const startEditArticle = (articleId, article) => {
             dispatch(editArticle(articleId, response.data.updatedArticle));
         } catch (e) {
             console.log('Error in startEditArticle:', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 };
@@ -78,6 +83,9 @@ export const startRemoveArticle = (articleId) => {
             dispatch(removeArticle(response.data.removedArticle._id));
         } catch (e) {
             console.log('Error in startRemoveArticle', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 };
@@ -96,10 +104,12 @@ export const startCommentArticle = (articleId, comment) => {
                 headers: {'x-auth': userToken}
 
             });
-            console.log(response);
             dispatch(commentArticle(articleId, response.data.comment));
         } catch (e) {
             console.log('Error in startCommentArticle', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 }
@@ -117,6 +127,9 @@ export const startRemoveComment = (articleId, commentId) => {
             dispatch(removeComment(articleId, commentId));
         } catch (e) {
             console.log('Error in startRemoveComment', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 };
@@ -134,6 +147,9 @@ export const startAddLike = (articleId ,userId) => {
             dispatch(addLike( articleId, userId));
         } catch (e) {
             console.log('Error in startAddLike', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 };
@@ -151,6 +167,9 @@ export const startRemoveLike = (articleId ,userId) => {
             dispatch(removeLike( articleId, userId));
         } catch (e) {
             console.log('Error in startRemoveLike', e);
+            if(e.message === 'Network Error'){
+                dispatch(setNetworkError());
+            }
         }
     };
 };
