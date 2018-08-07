@@ -7,6 +7,7 @@ const articles = [{
             createdAt: moment(0).format('D.M.Y')
         }],
         createdAt: moment(0).format('D.M.Y'),
+        _creatorId: '343',
         _id: '1',
         likes: ['someId'],
         title: 'Breaking news',
@@ -14,6 +15,7 @@ const articles = [{
     },{
         comments: [],
         createdAt: moment(0).subtract(4, 'days').format('D.M.Y'),
+        _creatorId: '343',
         _id: '2',
         likes: [],
         title: 'New graphene chips',
@@ -21,6 +23,7 @@ const articles = [{
     },{
         comments: [],
         createdAt: moment(0).add(4, 'days').format('D.M.Y'),
+        _creatorId: 'someOtherId',
         _id: '3',
         likes: [],
         title: 'Hydrogen revolution?',

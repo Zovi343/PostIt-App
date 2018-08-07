@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render SignUpForm correctly 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      placeholder="Your name"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Password Again"
+      required={true}
+      type="password"
+      value=""
+    />
+    <input
+      type="submit"
+      value="Sign Up"
+    />
+  </form>
+  <p>
+    OR
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Login
+  </button>
+</div>
+`;
+
+exports[`should render error when authFailed is passed down with value 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      onChange={[Function]}
+      placeholder="Your name"
+      required={true}
+      type="text"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <input
+      onChange={[Function]}
+      placeholder="Password Again"
+      required={true}
+      type="password"
+      value=""
+    />
+    <input
+      type="submit"
+      value="Sign Up"
+    />
+    <p>
+      This name already exists
+    </p>
+  </form>
+  <p>
+    OR
+  </p>
+  <button
+    onClick={[Function]}
+  >
+    Login
+  </button>
+</div>
+`;

@@ -4,7 +4,7 @@ exports[`should render ViewArticle correctly 1`] = `
 <div>
   <div>
     <button
-      disabled={true}
+      disabled={false}
       onClick={[Function]}
     >
       Edit Article

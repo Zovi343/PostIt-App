@@ -3,8 +3,7 @@ import React from 'react';
 class LoginForm extends React.Component {
     state = {
         name: '',
-        password: '',
-        error: ''
+        password: ''
     };
     onNameChange = (e) => {
         const name = e.target.value;
@@ -32,7 +31,6 @@ class LoginForm extends React.Component {
                     <input onChange={this.onNameChange} placeholder="Your name" type="text" value={this.state.name} required/>
                     <input onChange={this.onPasswordChange} placeholder="Password" type="password" value={this.state.password} required/>
                     <input type="submit" value="Login" />
-                    { this.state.error && <p>{this.state.error}</p> }
                     {/*This checks if the error with authentication exists and if it occured on this form*/}
                     { (this.props.authFailed && this.props.authFailed.login )&& <p>{this.props.authFailed.error}</p> }
                 </form>
@@ -40,7 +38,7 @@ class LoginForm extends React.Component {
                 <button onClick={this.props.changeForm}>Sign Up!</button>
             </div>
         );
-    }
+    };
 };
 
 export default LoginForm;

@@ -2,9 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { EditArticle } from '../../components/EditArticle';
 import articles from '../fixtures/articlesFixtures';
-import { resolve } from 'url';
-import { rejects } from 'assert';
-import { editArticle } from '../../actions/articlesActions';
+import user from '../fixtures/usersFixtures';
 
 let wrapper, startEditArticle, startRemoveArticle, history;
 
@@ -15,6 +13,7 @@ beforeEach(() => {
     wrapper = shallow(<EditArticle 
                                 article={articles[0]}
                                 startEditArticle={startEditArticle}
+                                userId={user.id}
                                 history={history}
                                 startRemoveArticle={startRemoveArticle}
                             />
@@ -36,4 +35,29 @@ test('should handle startRemoveArticle', async () => {
     wrapper.find('button').simulate('click');
     await expect(startRemoveArticle).toHaveBeenLastCalledWith(articles[0]._id);
     expect(history.push).toHaveBeenLastCalledWith('/');
+});
+
+test('should render error when article does note exist', () => {
+    wrapper = shallow(<EditArticle 
+            article={undefined}
+            startEditArticle={startEditArticle}
+            history={history}
+            startRemoveArticle={startRemoveArticle}
+            userId={user.id}
+        />
+    );
+    expect(wrapper).toMatchSnapshot();
+});
+
+//articles[2] has diffrent id from user 
+test('should render error when articleId does not match with userId', () => {
+    wrapper = shallow(<EditArticle 
+        article={articles[2]}
+        startEditArticle={startEditArticle}
+        history={history}
+        startRemoveArticle={startRemoveArticle}
+        userId={user.id}
+    />
+);
+expect(wrapper).toMatchSnapshot();
 });

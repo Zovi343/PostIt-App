@@ -9,6 +9,7 @@ exports[`should render EditArticle correctly 1`] = `
     <ArticleForm
       article={
         Object {
+          "_creatorId": "343",
           "_id": "1",
           "comments": Array [
             Object {
@@ -33,5 +34,21 @@ exports[`should render EditArticle correctly 1`] = `
       Remove Article
     </button>
   </div>
+</div>
+`;
+
+exports[`should render error when article does note exist 1`] = `
+<div>
+  <p>
+    You haven't created this article
+  </p>
+</div>
+`;
+
+exports[`should render error when articleId does not match with userId 1`] = `
+<div>
+  <p>
+    You haven't created this article
+  </p>
 </div>
 `;

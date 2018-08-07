@@ -10,6 +10,7 @@ exports[`should render CommentArticle with default data 1`] = `
     value=""
   />
   <input
+    disabled={false}
     type="submit"
     value="Comment"
   />

@@ -4,6 +4,7 @@ exports[`should render ArticleList correctly 1`] = `
 <div>
   <ol>
     <ArticleListItem
+      _creatorId="343"
       _id="1"
       comments={
         Array [
@@ -25,6 +26,7 @@ exports[`should render ArticleList correctly 1`] = `
       title="Breaking news"
     />
     <ArticleListItem
+      _creatorId="343"
       _id="2"
       comments={Array []}
       createdAt="28.12.1969"
@@ -34,6 +36,7 @@ exports[`should render ArticleList correctly 1`] = `
       title="New graphene chips"
     />
     <ArticleListItem
+      _creatorId="someOtherId"
       _id="3"
       comments={Array []}
       createdAt="5.1.1970"
