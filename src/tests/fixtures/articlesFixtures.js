@@ -9,7 +9,7 @@ const articles = [{
         createdAt: moment(0).format('D.M.Y'),
         _creatorId: '343',
         _id: '1',
-        likes: ['someId'],
+        likes: ['343'],
         title: 'Breaking news',
         text: 'Political info'
     },{

@@ -19,7 +19,7 @@ exports[`should render ArticleList correctly 1`] = `
       key="1"
       likes={
         Array [
-          "someId",
+          "343",
         ]
       }
       text="Political info"

@@ -20,7 +20,7 @@ exports[`should render EditArticle correctly 1`] = `
           ],
           "createdAt": "1.1.1970",
           "likes": Array [
-            "someId",
+            "343",
           ],
           "text": "Political info",
           "title": "Breaking news",
