@@ -16,7 +16,7 @@ test('should handle REMOVE_USER action ', () => {
     expect(state).toEqual({});
 });
 
-test('should handle REMOVE_USER action ', () => {
+test('should handle API_ERROR action ', () => {
     const error = {error:'Wrong name or password.', login: true};
     const state = authReducer(undefined, {type: 'API_ERROR', error });
     expect(state).toEqual({ authFailed: error});
