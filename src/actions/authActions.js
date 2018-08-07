@@ -62,9 +62,7 @@ export const startLogin = (userData) => {
 export const getUser = (userToken) => {
     return async (dispatch) => {
         try { 
-             const response = await axios({
-                method: 'get',
-                url: '/user/me',
+             const response = await axios.get('/user/me',{
                 headers: {'x-auth': userToken}
             });
              const newUser = {
@@ -88,9 +86,7 @@ export const getUser = (userToken) => {
 export const startLogout = (userToken) => {
     return async (dispatch) => {
     try {
-        const response = await axios({
-             method: 'delete',
-             url: '/user/logout',
+        const response = await axios.delete('/user/logout',{
              headers: {'x-auth': userToken}
          });
          sessionStorage.removeItem('token');
