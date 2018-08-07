@@ -46,8 +46,10 @@ export class UserSection extends React.Component {
     handleFilter = () => {
         if (this.props.filter){
             this.props.removeYourArticlesFilter();
+            history.push('/');
         }else {
             this.props.setYourArticlesFilter();
+            history.push('/');
         }
     }
     render () {
