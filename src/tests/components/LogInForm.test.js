@@ -21,12 +21,7 @@ test('should render LogInForm correctly', () => {
 test('should call this.props.onSubmit when form is submitted', () => {
     const name = 'Mark';
     const password = 'heslo1';
-    wrapper.find('input').at(0).simulate('change', {
-        target: { value: name}
-    });
-    wrapper.find('input').at(1).simulate('change', {
-        target: { value: password}
-    });
+    wrapper.setState({ name, password});
     wrapper.find('form').simulate('submit' ,{
         preventDefault: () => {}
     });

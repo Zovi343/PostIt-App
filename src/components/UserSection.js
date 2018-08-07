@@ -7,7 +7,7 @@ import { history } from '../routers/AppRouter';
 import { startSignUp, startLogin, startLogout } from '../actions/authActions';
 import { setYourArticlesFilter, removeYourArticlesFilter } from '../actions/filterActions';
 
-class UserSection extends React.Component {
+export class UserSection extends React.Component {
     state = {
         //this determines on which form I am currently
         login: true

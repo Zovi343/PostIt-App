@@ -22,16 +22,8 @@ test('should render SignUpForm correctly', () => {
 test('should call this.props.onSubmit when form is submitted', () => {
     const name = 'Mark';
     const password = 'heslo1';
-    const password2 = 'heslo1';
-    wrapper.find('input').at(0).simulate('change', {
-        target: { value: name}
-    });
-    wrapper.find('input').at(1).simulate('change', {
-        target: { value: password}
-    });
-    wrapper.find('input').at(2).simulate('change', {
-        target: { value: password2}
-    });
+    const passwordAgain = 'heslo1';
+    wrapper.setState({ name, password, passwordAgain  });
     wrapper.find('form').simulate('submit' ,{
         preventDefault: () => {}
     });
@@ -41,16 +33,8 @@ test('should call this.props.onSubmit when form is submitted', () => {
 test('should not call this.props.onSubmit if name or passwords do not have length greater than 3', () => {
     const name = 'Mark';
     const password = 'heslo';
-    const password2 = 'heslo';
-    wrapper.find('input').at(0).simulate('change', {
-        target: { value: name}
-    });
-    wrapper.find('input').at(1).simulate('change', {
-        target: { value: password}
-    });
-    wrapper.find('input').at(2).simulate('change', {
-        target: { value: password2}
-    });
+    const passwordAgain = 'heslo';
+    wrapper.setState({ name, password, passwordAgain  });
     wrapper.find('form').simulate('submit' ,{
         preventDefault: () => {}
     });
@@ -60,16 +44,8 @@ test('should not call this.props.onSubmit if name or passwords do not have lengt
 test('should not call this.props.onSubmit if passwords do not mathc', () => {
     const name = 'Mark';
     const password = 'heslo1';
-    const password2 = 'heslo2';
-    wrapper.find('input').at(0).simulate('change', {
-        target: { value: name}
-    });
-    wrapper.find('input').at(1).simulate('change', {
-        target: { value: password}
-    });
-    wrapper.find('input').at(2).simulate('change', {
-        target: { value: password2}
-    });
+    const passwordAgain = 'heslo2';
+    wrapper.setState({ name, password, passwordAgain  });
     wrapper.find('form').simulate('submit' ,{
         preventDefault: () => {}
     });
