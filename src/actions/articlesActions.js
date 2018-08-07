@@ -12,6 +12,7 @@ export const startSetArticles = () => {
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
             } else {
+                // it is here in else because I am testing this in test case, so in order to stop it from print out in terminal every single time I run test I put it in else statement, I am not going to test other thats why they are not in else
                 console.log('Error in startSetArticles:', e); 
             }
         }
@@ -50,16 +51,14 @@ export const startEditArticle = (articleId, article) => {
     return async (dispatch, getState) => {
        try {
             const userToken = getState().auth.token
-            const response = await axios({
-                method: 'patch',
-                url: `/article/${articleId}`, 
-                data: {
+            const response = await axios.patch(`/article/${articleId}`,{
                     "text": article.text,
                     "title": article.title,
                     "editedAt": article.createdAt //it's called createdAt but it represents time when it was updated, the name is createdAt because I use same form for creating and updating article
-                },
+                },{
                 headers: {'x-auth': userToken}
-            });
+                }
+            );
             dispatch(editArticle(articleId, response.data.updatedArticle));
         } catch (e) {
             console.log('Error in startEditArticle:', e);
@@ -74,12 +73,10 @@ export const startRemoveArticle = (articleId) => {
     return async (dispatch, getState) => {
         try {
             const userToken = getState().auth.token;
-            const response = await axios({
-                method: 'delete',
-                url: `/article/${articleId}`,
+            const response = await axios.delete(`/article/${articleId}`,{
                 headers: {'x-auth': userToken}
-
-            });
+                }
+            );
             dispatch(removeArticle(response.data.removedArticle._id));
         } catch (e) {
             console.log('Error in startRemoveArticle', e);
@@ -94,16 +91,13 @@ export const startCommentArticle = (articleId, comment) => {
     return async (dispatch, getState) => {
         try {
             const userToken = getState().auth.token;
-            const response = await axios({
-                method: 'post',
-                url: `/article/${articleId}/comment`,
-                data: {
+            const response = await axios.post(`/article/${articleId}/comment`,{
                     text: comment.comment,
                     createdAt: comment.createdAt
-                },
+                },{
                 headers: {'x-auth': userToken}
-
-            });
+                }
+            );
             dispatch(commentArticle(articleId, response.data.comment));
         } catch (e) {
             console.log('Error in startCommentArticle', e);
@@ -118,11 +112,8 @@ export const startRemoveComment = (articleId, commentId) => {
     return async (dispatch, getState) => {
         try {
             const userToken = getState().auth.token;
-            const response = await axios({
-                method: 'delete',
-                url: `/article/${articleId}/comment/${commentId}`,
+            const response = await axios.delete(`/article/${articleId}/comment/${commentId}`,{
                 headers: {'x-auth': userToken}
-
             });
             dispatch(removeComment(articleId, commentId));
         } catch (e) {
@@ -138,11 +129,8 @@ export const startAddLike = (articleId ,userId) => {
     return async (dispatch, getState) => {
         try {
             const userToken = getState().auth.token;
-            await axios({
-                method: 'post',
-                url: `/article/${articleId}/like`,
+            await axios.post(`/article/${articleId}/like`,{},{
                 headers: {'x-auth': userToken}
-
             });
             dispatch(addLike( articleId, userId));
         } catch (e) {
@@ -158,11 +146,8 @@ export const startRemoveLike = (articleId ,userId) => {
     return async (dispatch, getState) => {
         try {
             const userToken = getState().auth.token;
-            await axios({
-                method: 'delete',
-                url: `/article/${articleId}/like`,
+            await axios.delete(`/article/${articleId}/like` ,{
                 headers: {'x-auth': userToken}
-
             });
             dispatch(removeLike( articleId, userId));
         } catch (e) {
