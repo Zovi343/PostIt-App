@@ -28,7 +28,6 @@ exports[`should render ViewArticle correctly 1`] = `
       disabled={false}
       onClick={[Function]}
     >
-       
       <Component
         style={
           Object {

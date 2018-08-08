@@ -48,3 +48,13 @@ exports[`should render ArticleList correctly 1`] = `
   </ol>
 </div>
 `;
+
+exports[`should render message if user have filter to see only his articles and he have not created any articles 1`] = `
+<div>
+  <ol>
+    <p>
+       You haven't created any articles yet. 
+    </p>
+  </ol>
+</div>
+`;
