@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { setNetworkError } from './articlesActions';
 
-axios.defaults.baseURL = 'http://localhost:3000';
+if (process.env.NODE_ENV === 'production') {
+    axios.defaults.baseURL= 'https://sleepy-shelf-83196.herokuapp.com'
+} else {
+    axios.defaults.baseURL = 'http://localhost:3000';
+}
 
 //Signing Up
 export const startSignUp = (userData) => {

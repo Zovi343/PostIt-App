@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3000';
+if (process.env.NODE_ENV === 'production') {
+    axios.defaults.baseURL= 'https://sleepy-shelf-83196.herokuapp.com'
+} else {
+    axios.defaults.baseURL = 'http://localhost:3000';
+}
 
 export const startSetArticles = () => {
     return async (dispatch) => {
