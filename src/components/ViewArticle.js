@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import uuid from 'uuid';
 import CommentArticle from './CommentArticle';
 import CommentList from './CommentList';
-import { IoIosHeart } from "react-icons/io";
+//import { IoIosHeart } from "react-icons/io";
 import { startAddLike, startRemoveLike , startCommentArticle, startRemoveComment } from '../actions/articlesActions'; 
 
 export class ViewArticle extends React.Component {
@@ -57,7 +56,7 @@ export class ViewArticle extends React.Component {
                             {this.props.article.editedAt && <p>Edited at: {this.props.article.createdAt}</p>}
                             <p>{this.props.article.text}</p>
                             <CommentArticle likeOrCommentAllowed={this.likeOrCommentAllowed()} onSubmit={this.onSubmit} />
-                            <button disabled={this.likeOrCommentAllowed()}  onClick={this.onClickLike}> <IoIosHeart style={this.likeStyle()} /></button><p>Number of Likes: {this.props.article.likes.length}</p>
+                            <button disabled={this.likeOrCommentAllowed()}  onClick={this.onClickLike}>{ /*<IoIosHeart style={this.likeStyle()}/>*/}test</button><p>Number of Likes: {this.props.article.likes.length}</p>
                             <CommentList userId={this.props.userId} onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>
                         </div> 
                     ) : (
