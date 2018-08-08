@@ -3,13 +3,13 @@ import { shallow } from 'enzyme';
 import { UserSection } from '../../components/UserSection';
 import SignUpForm from '../../components/SingUpForm';
 import user from '../fixtures/usersFixtures';
+import { createMemoryHistory } from 'history';
 
 let startSignUp, 
     startLogin, 
     startLogout, 
     setYourArticlesFilter, 
     removeYourArticlesFilter,
-    history,
     wrapper;
 
 beforeEach(() => {
@@ -18,7 +18,6 @@ beforeEach(() => {
     startLogout = jest.fn();
     setYourArticlesFilter = jest.fn();
     removeYourArticlesFilter = jest.fn();
-    history= { push: jest.fn() }
     wrapper = shallow(<UserSection 
         startSignUp={startSignUp}
         startLogin={startLogin}
@@ -29,8 +28,7 @@ beforeEach(() => {
         authFailed={undefined}
         filter={null}
         networkError={false}
-        history={history}
-                    />)
+                    />);
 });
 
 test('should render UserSection when loginIn', () => {
@@ -53,8 +51,7 @@ test('should render UserSection when user is loggedIn', () => {
         authFailed={undefined}
         filter={null}
         networkError={false}
-        history={history}
-                    />)
+                    />);
     expect(wrapper).toMatchSnapshot();
 });
 
@@ -92,14 +89,13 @@ test('should call call startLogout and removeArticles when LogginOut while on Lo
         authFailed={undefined}
         filter={null}
         networkError={false}
-        history={history}
-                    />, );
+                    />);
     wrapper.setState({ login: false });
     wrapper.find('LoggedIn').prop('onLogout')();
     expect(wrapper.state('login')).toBe(true);
     expect(startLogout).toHaveBeenLastCalledWith(user.token)
     expect(removeYourArticlesFilter).toHaveBeenCalledTimes(1);
-    // I was not able to setup window.location.href(gosh!)
+    // I dont know how to mock it out because UserSection is importing history from AppRouter
     //expect(history.push).toHaveBeenCalledWith('/');
 });
 
@@ -114,10 +110,10 @@ test('should call setYourArticleFilter() when handleFilter is called while on Lo
         authFailed={undefined}
         filter={null}
         networkError={false}
-        history={history}
-                    />, );
+                    />);
     wrapper.find('LoggedIn').prop('handleFilter')();
     expect(setYourArticlesFilter).toHaveBeenCalledTimes(1);
+    //expect(history.push).toHaveBeenCalledWith('/');
 });
 
 test('should call removeYourArticleFilter() if filter is true and when handleFilter is called while on LoggedIn part', () => {
@@ -131,10 +127,10 @@ test('should call removeYourArticleFilter() if filter is true and when handleFil
         authFailed={undefined}
         filter={true}
         networkError={false}
-        history={history}
-                    />, );
+                    />);
     wrapper.find('LoggedIn').prop('handleFilter')();
     expect(removeYourArticlesFilter).toHaveBeenCalledTimes(1);
+    //expect(history.push).toHaveBeenCalledWith('/');
 });
 
 test('should render Server is down when there is networkError', () => {
@@ -148,7 +144,6 @@ test('should render Server is down when there is networkError', () => {
         authFailed={undefined}
         filter={null}
         networkError={true}
-        history={history}
-                    />, );
+                    />);
     expect(wrapper).toMatchSnapshot();
 });

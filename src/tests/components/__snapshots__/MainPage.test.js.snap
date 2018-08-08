@@ -2,8 +2,13 @@
 
 exports[`should render MainPage correctly 1`] = `
 <div>
-  <h1>
-    PostIt!
-  </h1>
+  <Link
+    replace={false}
+    to="/"
+  >
+    <h1>
+      PostIt!
+    </h1>
+  </Link>
 </div>
 `;
