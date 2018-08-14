@@ -55,7 +55,7 @@ export class UserSection extends React.Component {
     render () {
         return (
             <div>
-                { this.props.networkError ? <h1>Server is down</h1> : this.renderCorrectPart()  }
+                { this.props.networkError ? <p>We are sorry but some error probably occured</p> : this.renderCorrectPart()  }
             </div>
         );
     };

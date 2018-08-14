@@ -49,6 +49,14 @@ exports[`should render ArticleList correctly 1`] = `
 </div>
 `;
 
+exports[`should render error message if server is down 1`] = `
+<div>
+  <h1>
+    Server is down please try reconnect later 
+  </h1>
+</div>
+`;
+
 exports[`should render message if user have filter to see only his articles and he have not created any articles 1`] = `
 <div>
   <ol>

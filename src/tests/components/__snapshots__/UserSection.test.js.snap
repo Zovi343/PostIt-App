@@ -2,9 +2,9 @@
 
 exports[`should render Server is down when there is networkError 1`] = `
 <div>
-  <h1>
-    Server is down
-  </h1>
+  <p>
+    We are sorry but some error probably occured
+  </p>
 </div>
 `;
 

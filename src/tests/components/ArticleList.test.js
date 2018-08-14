@@ -11,4 +11,9 @@ test('should render ArticleList correctly', () => {
 test('should render message if user have filter to see only his articles and he have not created any articles', () => {
     const wrapper = shallow(<ArticleList articles={[]} filter={true}/>);
     expect(wrapper).toMatchSnapshot();
-})
+});
+
+test('should render error message if server is down', () => {
+    const wrapper = shallow(<ArticleList articles={[]} filter={true} networkError={true}/>);
+    expect(wrapper).toMatchSnapshot();
+});
