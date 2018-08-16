@@ -3,20 +3,7 @@
 exports[`should render ArticleList correctly 1`] = `
 <div>
   <div>
-    <div>
-      <button
-        disabled={true}
-        onClick={[Function]}
-      >
-        See All Articles
-      </button>
-      <button
-        disabled={false}
-        onClick={[Function]}
-      >
-        See Your Articles
-      </button>
-    </div>
+    <Connect(ArticleListFilter) />
     <ol>
       <ArticleListItem
         _creatorId="343"
@@ -76,23 +63,10 @@ exports[`should render error message if server is down 1`] = `
 exports[`should render message if user have filter to see only his articles and he have not created any articles 1`] = `
 <div>
   <div>
-    <div>
-      <button
-        disabled={false}
-        onClick={[Function]}
-      >
-        See All Articles
-      </button>
-      <button
-        disabled={true}
-        onClick={[Function]}
-      >
-        See Your Articles
-      </button>
-    </div>
+    <Connect(ArticleListFilter) />
     <ol>
       <p>
-         You haven't created any articles yet. 
+         No articles fulfill these search conditions. 
       </p>
     </ol>
   </div>

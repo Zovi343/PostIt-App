@@ -3,6 +3,6 @@ import articles from '../fixtures/articlesFixtures';
 import user from '../fixtures/usersFixtures';
 
 test('should return articles which _creatorId match userID', () => {
-   const filteredArticles = yourArticlesFilter(articles, user.id);
+   const filteredArticles = yourArticlesFilter(articles, user.id, { yourArticles: true, text: ""});
    expect(filteredArticles.length).toBe(2);
 })
