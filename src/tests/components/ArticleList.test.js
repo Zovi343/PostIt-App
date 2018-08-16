@@ -9,8 +9,8 @@ test('should render ArticleList correctly', () => {
     expect(wrapper).toMatchSnapshot();
 });
 
-test('should render message if user have filter to see only his articles and he have not created any articles', () => {
-    const wrapper = shallow(<ArticleList articles={[]} filter={true} user={user}/>);
+test('should render message if no articles are rendering ', () => {
+    const wrapper = shallow(<ArticleList articles={[]} filter={{}} user={{}}/>);
     expect(wrapper).toMatchSnapshot();
 });
 

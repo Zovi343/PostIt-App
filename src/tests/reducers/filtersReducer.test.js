@@ -14,3 +14,11 @@ test('should handle REMOVE_YOUR_ARTICLES_FILTER', () => {
     const state = filtersReducer({yourArticles: true, text: ''}, {type: 'REMOVE_YOUR_ARTICLES_FILTER'});
     expect(state).toEqual({yourArticles: false, text: ''});
 });
+
+test('should handle SET_TEXT_FILTER', () => {
+    const state = filtersReducer({yourArticles: false, text: ''}, {
+                                                                    type: 'SET_TEXT_FILTER',
+                                                                    text: 'test'
+                                                                });
+    expect(state).toEqual({yourArticles: false, text: 'test'});
+});

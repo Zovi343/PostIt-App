@@ -60,7 +60,7 @@ exports[`should render error message if server is down 1`] = `
 </div>
 `;
 
-exports[`should render message if user have filter to see only his articles and he have not created any articles 1`] = `
+exports[`should render message if no articles are rendering  1`] = `
 <div>
   <div>
     <Connect(ArticleListFilter) />

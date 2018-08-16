@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render ArticleListFilter with both buttons disabled set to true if user is not logged in 1`] = `
+<div>
+  <form>
+    <input
+      onChange={[Function]}
+      placeholder="Search Article by Name"
+      type="text"
+      value=""
+    />
+  </form>
+  <button
+    disabled={true}
+    onClick={[Function]}
+  >
+    See All Articles
+  </button>
+  <button
+    disabled={true}
+    onClick={[Function]}
+  >
+    See Your Articles
+  </button>
+</div>
+`;
