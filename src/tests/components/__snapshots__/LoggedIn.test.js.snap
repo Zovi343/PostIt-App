@@ -19,11 +19,6 @@ exports[`should redner LoggedIn correctly 1`] = `
   <button
     onClick={[Function]}
   >
-    See All Articles
-  </button>
-  <button
-    onClick={[Function]}
-  >
     Logout
   </button>
 </div>

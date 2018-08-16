@@ -2,50 +2,66 @@
 
 exports[`should render ArticleList correctly 1`] = `
 <div>
-  <ol>
-    <ArticleListItem
-      _creatorId="343"
-      _id="1"
-      comments={
-        Array [
-          Object {
-            "_id": "1a",
-            "comment": "Something to test?",
-            "createdAt": "1.1.1970",
-          },
-        ]
-      }
-      createdAt="1.1.1970"
-      key="1"
-      likes={
-        Array [
-          "343",
-        ]
-      }
-      text="Political info"
-      title="Breaking news"
-    />
-    <ArticleListItem
-      _creatorId="343"
-      _id="2"
-      comments={Array []}
-      createdAt="28.12.1969"
-      key="2"
-      likes={Array []}
-      text="Are going to conqver world"
-      title="New graphene chips"
-    />
-    <ArticleListItem
-      _creatorId="someOtherId"
-      _id="3"
-      comments={Array []}
-      createdAt="5.1.1970"
-      key="3"
-      likes={Array []}
-      text="Hydrogen powered ship is going to sail"
-      title="Hydrogen revolution?"
-    />
-  </ol>
+  <div>
+    <div>
+      <button
+        disabled={true}
+        onClick={[Function]}
+      >
+        See All Articles
+      </button>
+      <button
+        disabled={false}
+        onClick={[Function]}
+      >
+        See Your Articles
+      </button>
+    </div>
+    <ol>
+      <ArticleListItem
+        _creatorId="343"
+        _id="1"
+        comments={
+          Array [
+            Object {
+              "_id": "1a",
+              "comment": "Something to test?",
+              "createdAt": "1.1.1970",
+            },
+          ]
+        }
+        createdAt="1.1.1970"
+        key="1"
+        likes={
+          Array [
+            "343",
+          ]
+        }
+        text="Political info"
+        title="Breaking news"
+      />
+      <ArticleListItem
+        _creatorId="343"
+        _id="2"
+        comments={Array []}
+        createdAt="28.12.1969"
+        key="2"
+        likes={Array []}
+        text="Are going to conqver world"
+        title="New graphene chips"
+      />
+      <ArticleListItem
+        _creatorId="someOtherId"
+        _id="3"
+        comments={Array []}
+        createdAt="5.1.1970"
+        key="3"
+        likes={Array []}
+        text="Hydrogen powered ship is going to sail"
+        title="Hydrogen revolution?"
+      />
+    </ol>
+  </div>
 </div>
 `;
 
@@ -59,10 +75,26 @@ exports[`should render error message if server is down 1`] = `
 
 exports[`should render message if user have filter to see only his articles and he have not created any articles 1`] = `
 <div>
-  <ol>
-    <p>
-       You haven't created any articles yet. 
-    </p>
-  </ol>
+  <div>
+    <div>
+      <button
+        disabled={false}
+        onClick={[Function]}
+      >
+        See All Articles
+      </button>
+      <button
+        disabled={true}
+        onClick={[Function]}
+      >
+        See Your Articles
+      </button>
+    </div>
+    <ol>
+      <p>
+         You haven't created any articles yet. 
+      </p>
+    </ol>
+  </div>
 </div>
 `;

@@ -5,7 +5,6 @@ import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
 import { history } from '../routers/AppRouter';
 import { startSignUp, startLogin, startLogout } from '../actions/authActions';
-import { setYourArticlesFilter, removeYourArticlesFilter } from '../actions/filterActions';
 
 export class UserSection extends React.Component {
     state = {
@@ -21,7 +20,6 @@ export class UserSection extends React.Component {
             login: true
         }));
         this.props.startLogout(this.props.user.token);
-        this.props.removeYourArticlesFilter(); //this removes filter so when log out user can actually see articles
         //this  redirects the user in case he logs out while creating or edititng article
         if(window.location.href.includes('edit') || window.location.href.includes('create')){
             history.push('/');
@@ -34,24 +32,15 @@ export class UserSection extends React.Component {
         this.props.startSignUp(userData);
     };
     renderCorrectPart = () => {
-        // this checks if user exists
+        // this checks if user exists(I need to chcek if property name exists because on state.auth are stored also errors which might occur with authtentication)
         if(!!this.props.user.name) {
-            return <LoggedIn filter={this.props.filter} handleFilter={this.handleFilter} name={this.props.user.name} onLogout={this.onLogout} />
+            return <LoggedIn name={this.props.user.name} onLogout={this.onLogout} />
         } else if (this.state.login) {
             return <LoginForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitLogin}/>
         } else {
             return <SignUpForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitSignUp}/>
         }
     };
-    handleFilter = () => {
-        if (this.props.filter){
-            this.props.removeYourArticlesFilter();
-            history.push('/');
-        }else {
-            this.props.setYourArticlesFilter();
-            history.push('/');
-        }
-    }
     render () {
         return (
             <div>
@@ -63,7 +52,6 @@ export class UserSection extends React.Component {
 const mapStateToProps = (state) => ({
     user: state.auth,
     authFailed: state.auth.authFailed,
-    filter: state.filter,
     networkError: state.networkError
 });
 
@@ -71,8 +59,6 @@ const mapDispatchToProps = (dispatch) => ({
     startSignUp: (userData) => dispatch(startSignUp(userData)),
     startLogin: (userData) => dispatch(startLogin(userData)),
     startLogout: (userToken) => dispatch(startLogout(userToken)),
-    setYourArticlesFilter: () => dispatch(setYourArticlesFilter()),
-    removeYourArticlesFilter: () => dispatch(removeYourArticlesFilter())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSection);

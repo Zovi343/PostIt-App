@@ -29,8 +29,6 @@ exports[`should render UserSection when signingUp 1`] = `
 exports[`should render UserSection when user is loggedIn 1`] = `
 <div>
   <LoggedIn
-    filter={null}
-    handleFilter={[Function]}
     name="Mark"
     onLogout={[Function]}
   />

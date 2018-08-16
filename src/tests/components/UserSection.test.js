@@ -3,27 +3,20 @@ import { shallow } from 'enzyme';
 import { UserSection } from '../../components/UserSection';
 import SignUpForm from '../../components/SingUpForm';
 import user from '../fixtures/usersFixtures';
-import { createMemoryHistory } from 'history';
 
 let startSignUp, 
     startLogin, 
     startLogout, 
-    setYourArticlesFilter, 
-    removeYourArticlesFilter,
     wrapper;
 
 beforeEach(() => {
     startSignUp = jest.fn();
     startLogin =jest.fn();
     startLogout = jest.fn();
-    setYourArticlesFilter = jest.fn();
-    removeYourArticlesFilter = jest.fn();
     wrapper = shallow(<UserSection 
         startSignUp={startSignUp}
         startLogin={startLogin}
         startLogout={startLogout}
-        setYourArticlesFilter={setYourArticlesFilter}
-        removeYourArticlesFilter={removeYourArticlesFilter}
         user={{}}
         authFailed={undefined}
         filter={null}
@@ -45,8 +38,6 @@ test('should render UserSection when user is loggedIn', () => {
         startSignUp={startSignUp}
         startLogin={startLogin}
         startLogout={startLogout}
-        setYourArticlesFilter={setYourArticlesFilter}
-        removeYourArticlesFilter={removeYourArticlesFilter}
         user={user} //<-- this is diffrent from befaoreach shallow
         authFailed={undefined}
         filter={null}
@@ -59,6 +50,7 @@ test('should call startLogin onSubmitLogin when I am on on LoginForm', () => {
     wrapper.find('LoginForm').prop('onSubmit')(user);
     expect(startLogin).toHaveBeenLastCalledWith(user);
 });
+
 
 test('should cahnge login in state to false when changeForm is called on LoginForm', () => {
     wrapper.find('LoginForm').prop('changeForm')();
@@ -78,13 +70,11 @@ test('should cahnge login in state to true when changeForm is called on SignUpFo
     expect(wrapper.state('login')).toBe(true);
 });
 
-test('should call call startLogout and removeArticles when LogginOut while on LoggedIn part', () => {
+test('should call startLogout when LogginOut while on LoggedIn part', () => {
     wrapper = shallow(<UserSection 
         startSignUp={startSignUp}
         startLogin={startLogin}
         startLogout={startLogout}
-        setYourArticlesFilter={setYourArticlesFilter}
-        removeYourArticlesFilter={removeYourArticlesFilter}
         user={user} //<-- this is diffrent from befaoreach shallow
         authFailed={undefined}
         filter={null}
@@ -94,52 +84,16 @@ test('should call call startLogout and removeArticles when LogginOut while on Lo
     wrapper.find('LoggedIn').prop('onLogout')();
     expect(wrapper.state('login')).toBe(true);
     expect(startLogout).toHaveBeenLastCalledWith(user.token)
-    expect(removeYourArticlesFilter).toHaveBeenCalledTimes(1);
     // I dont know how to mock it out because UserSection is importing history from AppRouter
     //expect(history.push).toHaveBeenCalledWith('/');
 });
 
-test('should call setYourArticleFilter() when handleFilter is called while on LoggedIn part', () => {
-    wrapper = shallow(<UserSection 
-        startSignUp={startSignUp}
-        startLogin={startLogin}
-        startLogout={startLogout}
-        setYourArticlesFilter={setYourArticlesFilter}
-        removeYourArticlesFilter={removeYourArticlesFilter}
-        user={user} //<-- this is diffrent from befaoreach shallow
-        authFailed={undefined}
-        filter={null}
-        networkError={false}
-                    />);
-    wrapper.find('LoggedIn').prop('handleFilter')();
-    expect(setYourArticlesFilter).toHaveBeenCalledTimes(1);
-    //expect(history.push).toHaveBeenCalledWith('/');
-});
-
-test('should call removeYourArticleFilter() if filter is true and when handleFilter is called while on LoggedIn part', () => {
-    wrapper = shallow(<UserSection 
-        startSignUp={startSignUp}
-        startLogin={startLogin}
-        startLogout={startLogout}
-        setYourArticlesFilter={setYourArticlesFilter}
-        removeYourArticlesFilter={removeYourArticlesFilter}
-        user={user} //<-- this is diffrent from befaoreach shallow
-        authFailed={undefined}
-        filter={true}
-        networkError={false}
-                    />);
-    wrapper.find('LoggedIn').prop('handleFilter')();
-    expect(removeYourArticlesFilter).toHaveBeenCalledTimes(1);
-    //expect(history.push).toHaveBeenCalledWith('/');
-});
 
 test('should render Server is down when there is networkError', () => {
     wrapper = shallow(<UserSection 
         startSignUp={startSignUp}
         startLogin={startLogin}
         startLogout={startLogout}
-        setYourArticlesFilter={setYourArticlesFilter}
-        removeYourArticlesFilter={removeYourArticlesFilter}
         user={user} //<-- this is diffrent from befaoreach shallow
         authFailed={undefined}
         filter={null}
