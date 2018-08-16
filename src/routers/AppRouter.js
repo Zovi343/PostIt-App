@@ -13,7 +13,7 @@ export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
-    <div>
+    <div className="container">
     <MainPage />
       <Switch>
         <Route path="/" component={ArticleList} exact={true}/>

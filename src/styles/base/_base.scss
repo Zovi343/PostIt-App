@@ -1,16 +1,40 @@
 * {
-  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 html {
+  box-sizing: border-box;
   font-size: 62.5%;
+  overflow: hidden; // <-- overflow hidden stops verticall scrollbar from showing up -
+  // - (but it can probbaly stops scorllbar from appearing at all)
 }
 
 body {
-  color: $dark-grey;
-  font-family: Helvetica, Arial, sans-serif;
+  color: red;
+  background-image: url(/images/blackCubes.png);
+  // background-image: linear-gradient(to right bottom, 
+  //                 #75D701,
+  //                 #56A902,
+  //                 #4f953b
+  //                 );
+  // background-repeat: no-repeat;
+  background-size: 30%;
+  font-weight: 400;
+  font-family: 'Open Sans',Helvetica, Arial, sans-serif;
   font-size: $m-size;
   line-height: 1.6;
+
+  min-height: 100vh;
+  overflow: hidden; // <-- overflow hidden stops verticall scrollbar from showing up
+    // - (but it can probbaly stops scorllbar from appearing at all)
+
 }
 
 button {
@@ -21,6 +45,3 @@ button:disabled {
   cursor: default;
 }
 
-.is-active {
-  font-weight: bold;
-}
