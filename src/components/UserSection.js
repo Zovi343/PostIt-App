@@ -13,8 +13,11 @@ export class UserSection extends React.Component {
     };
     changeForm = () => {
         this.state.login ? this.setState(() => ({ login: false})) : this.setState(() => ({ login: true}));
-        this.props.storeUser({}); // <-- this is not tested
+        this.props.storeUser({}); // <-- there is not test case for this!!!
     };
+    onCreateArticle = () => {
+        history.push('/create');
+    }
     onLogout = () => {
         //this here ensures that user gets always redirected to the login section when logout(and not to the signup section)
         this.setState(() => ({
@@ -35,11 +38,11 @@ export class UserSection extends React.Component {
     renderCorrectPart = () => {
         // this checks if user exists(I need to chcek if property name exists because on state.auth are stored also errors which might occur with authtentication)
         if(!!this.props.user.name) {
-            return <LoggedIn name={this.props.user.name} onLogout={this.onLogout} />
+            return <LoggedIn onCreateArticle={this.onCreateArticle} name={this.props.user.name} onLogout={this.onLogout} />
         } else if (this.state.login) {
-            return <LoginForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitLogin}/>
+            return <LoginForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitLogin} />
         } else {
-            return <SignUpForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitSignUp}/>
+            return <SignUpForm authFailed={this.props.authFailed} changeForm={this.changeForm} onSubmit={this.onSubmitSignUp} />
         }
     };
     render () {
