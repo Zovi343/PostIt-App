@@ -12,20 +12,21 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
   overflow: hidden; // <-- overflow hidden stops verticall scrollbar from showing up -
   // - (but it can probbaly stops scorllbar from appearing at all)
 }
 
 body {
-  color: red;
-  background-image: url(/images/blackCubes.png);
-  // background-image: linear-gradient(to right bottom, 
-  //                 #75D701,
-  //                 #56A902,
-  //                 #4f953b
-  //                 );
-  // background-repeat: no-repeat;
-  background-size: 30%;
+  color: $color-grey-dark-1;
+  background-image: linear-gradient(to right bottom, 
+                  $color-primary-light,
+                  $color-primary-dark-1,
+                  #3c7701,
+                  $color-primary-dark-2
+                  );
+  background-repeat: no-repeat;
+  background-size: cover;
   font-weight: 400;
   font-family: 'Open Sans',Helvetica, Arial, sans-serif;
   font-size: $m-size;
@@ -44,4 +45,3 @@ button {
 button:disabled {
   cursor: default;
 }
-

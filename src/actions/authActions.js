@@ -105,6 +105,7 @@ export const startLogout = (userToken) => {
 };
 
 //Storing User afer startSignUp or startLogin
+// This can be also used in order  to remove auth errors
 export const storeUser = (user) => ({
     type: 'STORE_USER',
     user

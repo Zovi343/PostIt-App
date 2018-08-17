@@ -26,16 +26,22 @@ class LoginForm extends React.Component {
     }
     render () {
         return (
-            <div>
-                <form onSubmit={this.onSubmit}>
-                    <input onChange={this.onNameChange} placeholder="Your name" type="text" value={this.state.name} required/>
-                    <input onChange={this.onPasswordChange} placeholder="Password" type="password" value={this.state.password} required/>
-                    <input type="submit" value="Login" />
-                    {/*This checks if the error with authentication exists and if it occured on this form*/}
-                    { (this.props.authFailed && this.props.authFailed.login )&& <p>{this.props.authFailed.error}</p> }
+            <div className="not-logged-in">
+                <form className="not-logged-in__group form" onSubmit={this.onSubmit}>
+                    <div className="form__group">
+                        <label htmlFor="name">Name</label>
+                        <input className="form__input" id="name" onChange={this.onNameChange} placeholder="Your name" type="text" value={this.state.name} required/>
+                    </div>
+                    <div className="form__group u-margin-bottom-medium">
+                        <label htmlFor="password">Password</label>
+                        <input className="form__input" id="password" onChange={this.onPasswordChange} placeholder="Password" type="password" value={this.state.password} required/>
+                    </div>
+                    <input className="btn btn--white" type="submit" value="Login" />
                 </form>
-                <p>OR</p>
-                <button onClick={this.props.changeForm}>Sign Up!</button>
+                <p className="not-logged-in__group" >OR</p>
+                <button className="not-logged-in__group btn btn--green" onClick={this.props.changeForm}>Sign Up!</button>
+                {/*This checks if the error with authentication exists and if it occured on this form*/}
+                { (this.props.authFailed && this.props.authFailed.login ) && <p>{this.props.authFailed.error}</p> }
             </div>
         );
     };

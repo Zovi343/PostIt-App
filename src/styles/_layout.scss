@@ -1,5 +1,19 @@
 .container {
-    max-width: 120rem;
+    max-width: 125rem;
     margin: 4rem auto;
-    background-color: #fff;
+    background-color: $color-grey-light-2;
+    border-radius: 3px;
+    box-shadow: 0 2rem 6rem rgba(0,0,0, .3);
+
+}
+
+.content {
+    display: flex;
+}
+
+.sidebar {
+    background-color: $color-grey-dark-1;
+    border-bottom-left-radius: 3px;
+
+    flex: 0 0 20%;
 }

@@ -4,7 +4,7 @@ import LoginForm from './LoginForm';
 import  SignUpForm from './SingUpForm';
 import LoggedIn from './LoggedIn';
 import { history } from '../routers/AppRouter';
-import { startSignUp, startLogin, startLogout } from '../actions/authActions';
+import { startSignUp, startLogin, startLogout, storeUser } from '../actions/authActions';
 
 export class UserSection extends React.Component {
     state = {
@@ -13,6 +13,7 @@ export class UserSection extends React.Component {
     };
     changeForm = () => {
         this.state.login ? this.setState(() => ({ login: false})) : this.setState(() => ({ login: true}));
+        this.props.storeUser({}); // <-- this is not tested
     };
     onLogout = () => {
         //this here ensures that user gets always redirected to the login section when logout(and not to the signup section)
@@ -43,8 +44,15 @@ export class UserSection extends React.Component {
     };
     render () {
         return (
-            <div>
-                { this.props.networkError ? <p>We are sorry but some error probably occured</p> : this.renderCorrectPart()  }
+            <div className="sidebar">
+                { 
+                    this.props.networkError 
+                    ? <p>We are sorry but some error probably occured</p> 
+                    : <div className="user-section"> 
+                        {this.renderCorrectPart()} 
+                        <footer className="user-section__legal">This page was created and designed by Jakub Žovák.</footer>
+                    </div> 
+                }
             </div>
         );
     };
@@ -59,6 +67,7 @@ const mapDispatchToProps = (dispatch) => ({
     startSignUp: (userData) => dispatch(startSignUp(userData)),
     startLogin: (userData) => dispatch(startLogin(userData)),
     startLogout: (userToken) => dispatch(startLogout(userToken)),
+    storeUser: (data) => dispatch(storeUser(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSection);

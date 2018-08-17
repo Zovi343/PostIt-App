@@ -1,0 +1,25 @@
+.header {
+    background-color: #fff;
+    border-bottom: solid 1px $color-grey-light-4;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px; //<-- this two are set here in order because header is on top of the container and so tow top corners of container did not seem to be rounder when border radius is set on container 
+}
+
+.header__title {
+    text-decoration: none;
+
+    h1 {
+        text-decoration: underline #f9320c;
+        font-size: 3rem;
+        margin: 0 0 0 5rem;
+        
+        display: inline-block;
+        background-image: linear-gradient(to right, $color-primary-dark-1, $color-primary-light);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+}
+
+.header__exclamation {
+    color: #f9320c;
+}
