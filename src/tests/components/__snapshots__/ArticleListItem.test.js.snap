@@ -2,27 +2,44 @@
 
 exports[`should render ArticleListItem correctly 1`] = `
 <Link
+  className="list-item"
   replace={false}
   to="view/1"
 >
-  <h3>
+  <h3
+    className="u-margin-bottom-smallest"
+  >
     Breaking news
   </h3>
-  <p>
+  <p
+    className="creator-date u-margin-bottom-smallest"
+  >
     Posted by: 
      at: 
     1.1.1970
   </p>
-  <p>
-     
-    <Component />
-     
-    1
-  </p>
-  <p>
-    <Component />
-     
-    1
-  </p>
+  <div
+    className="list-item__values"
+  >
+    <p
+      className="value"
+    >
+       
+      <Component
+        className="value__icon"
+      />
+       
+      1
+    </p>
+    <p
+      className="value"
+    >
+      <Component
+        className="value__icon"
+      />
+       
+      1
+    </p>
+  </div>
 </Link>
 `;

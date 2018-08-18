@@ -12,6 +12,7 @@ export class AddArticle extends React.Component {
     render () {
         return ( 
         <div>
+            <h2>Creating Article</h2>
             <ArticleForm onSubmit={this.onSubmit} />
         </div>
         );

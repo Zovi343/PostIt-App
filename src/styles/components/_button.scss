@@ -22,10 +22,17 @@
     background-color: $color-primary;
     border: solid 2px $color-primary;
     color: $color-white;
+    transition: all .3s;
 
     &:hover {
         background-color: $color-primary-dark-1;
         border: solid 2px $color-primary-dark-1;
+    }
+
+    &:disabled {
+        background-color: $color-grey-dark-3;
+        border: solid 2px $color-grey-dark-3; 
+        transform: translateY(0)
     }
 }
 

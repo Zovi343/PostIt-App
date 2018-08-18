@@ -1,22 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ArticleListFilter with both buttons disabled set to true if user is not logged in 1`] = `
-<div>
-  <form>
+<div
+  className="filter"
+>
+  <form
+    className="filter__group filter-form"
+  >
     <input
+      className="filter-form__input"
       onChange={[Function]}
-      placeholder="Search Article by Name"
+      placeholder="Search Article By Name"
       type="text"
       value=""
     />
   </form>
   <button
+    className="filter__group btn btn--green"
     disabled={true}
     onClick={[Function]}
   >
     See All Articles
   </button>
   <button
+    className="filter__group btn btn--green"
     disabled={true}
     onClick={[Function]}
   >

@@ -30,17 +30,18 @@ export class ArticleListFilter extends React.Component {
     
     render () { 
         return  ( 
-            <div>
-                <form> 
+            <div className="filter">
+                <form className="filter__group filter-form"> 
                     <input
+                        className="filter-form__input"
                         onChange={this.onTextFilterChange} 
                         type="text" 
-                        placeholder="Search Article by Name"
+                        placeholder="Search Article By Name"
                         value={this.props.filter.text}
                     />
                 </form>
-                <button onClick={this.handleSeeAll} disabled={this.disablingBtnSeeAll()}>See All Articles</button>
-                <button onClick={this.handleSeeYours} disabled={this.disablingBtnSeeYours()}>See Your Articles</button>
+                <button className="filter__group btn btn--green" onClick={this.handleSeeAll} disabled={this.disablingBtnSeeAll()}>See All Articles</button>
+                <button className="filter__group btn btn--green" onClick={this.handleSeeYours} disabled={this.disablingBtnSeeYours()}>See Your Articles</button>
             </div>                
         )
     };

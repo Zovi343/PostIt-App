@@ -1,88 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render SignUpForm correctly 1`] = `
-<div>
+<div
+  className="not-logged-in"
+>
   <form
+    className="not-logged-in__group form"
     onSubmit={[Function]}
   >
+    <div
+      className="form__group"
+    >
+      <label
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <input
+        className="form__input"
+        id="name"
+        onChange={[Function]}
+        placeholder="Your name"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className="form__input"
+        id="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group u-margin-bottom-medium"
+    >
+      <label
+        htmlFor="password"
+      >
+        Repeat Password
+      </label>
+      <input
+        className="form__input"
+        onChange={[Function]}
+        placeholder="Repeat Password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
     <input
-      onChange={[Function]}
-      placeholder="Your name"
-      required={true}
-      type="text"
-      value=""
-    />
-    <input
-      onChange={[Function]}
-      placeholder="Password"
-      required={true}
-      type="password"
-      value=""
-    />
-    <input
-      onChange={[Function]}
-      placeholder="Password Again"
-      required={true}
-      type="password"
-      value=""
-    />
-    <input
+      className="btn btn--green"
       type="submit"
       value="Sign Up"
     />
   </form>
-  <p>
+  <p
+    className="not-logged-in__group"
+  >
     OR
   </p>
   <button
+    className="not-logged-in__group btn btn--white"
     onClick={[Function]}
   >
     Login
   </button>
+  <p />
 </div>
 `;
 
 exports[`should render error when authFailed is passed down with value 1`] = `
-<div>
+<div
+  className="not-logged-in"
+>
   <form
+    className="not-logged-in__group form"
     onSubmit={[Function]}
   >
+    <div
+      className="form__group"
+    >
+      <label
+        htmlFor="name"
+      >
+        Name
+      </label>
+      <input
+        className="form__input"
+        id="name"
+        onChange={[Function]}
+        placeholder="Your name"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group"
+    >
+      <label
+        htmlFor="password"
+      >
+        Password
+      </label>
+      <input
+        className="form__input"
+        id="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
+    <div
+      className="form__group u-margin-bottom-medium"
+    >
+      <label
+        htmlFor="password"
+      >
+        Repeat Password
+      </label>
+      <input
+        className="form__input"
+        onChange={[Function]}
+        placeholder="Repeat Password"
+        required={true}
+        type="password"
+        value=""
+      />
+    </div>
     <input
-      onChange={[Function]}
-      placeholder="Your name"
-      required={true}
-      type="text"
-      value=""
-    />
-    <input
-      onChange={[Function]}
-      placeholder="Password"
-      required={true}
-      type="password"
-      value=""
-    />
-    <input
-      onChange={[Function]}
-      placeholder="Password Again"
-      required={true}
-      type="password"
-      value=""
-    />
-    <input
+      className="btn btn--green"
       type="submit"
       value="Sign Up"
     />
-    <p>
-      This name already exists
-    </p>
   </form>
-  <p>
+  <p
+    className="not-logged-in__group"
+  >
     OR
   </p>
   <button
+    className="not-logged-in__group btn btn--white"
     onClick={[Function]}
   >
     Login
   </button>
+  <p>
+    This name already exists
+  </p>
 </div>
 `;

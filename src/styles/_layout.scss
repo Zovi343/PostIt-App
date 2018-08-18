@@ -1,14 +1,18 @@
 .container {
-    max-width: 125rem;
-    margin: 4rem auto;
-    background-color: $color-grey-light-2;
     border-radius: 3px;
     box-shadow: 0 2rem 6rem rgba(0,0,0, .3);
+    max-width: 120rem;
+
+    flex:1;
+}
+
+.wrapper-div {
 
 }
 
 .content {
     display: flex;
+    height: 60rem;
 }
 
 .sidebar {
@@ -16,4 +20,21 @@
     border-bottom-left-radius: 3px;
 
     flex: 0 0 20%;
+
+    &__error {
+        background-color: rgba($color-red, 0.8);
+        border-radius: 15px;
+        color: $color-white;
+        font-size: 2rem;
+        margin: 3rem auto;
+        padding: 1rem;
+        text-align: center;
+        width: 90%;
+    }
+}
+
+.main-content {
+    background-color: $color-grey-light-3;
+    
+    flex: 1;
 }

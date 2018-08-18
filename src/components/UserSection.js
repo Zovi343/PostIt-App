@@ -50,7 +50,7 @@ export class UserSection extends React.Component {
             <div className="sidebar">
                 { 
                     this.props.networkError 
-                    ? <p>We are sorry but some error probably occured</p> 
+                    ? <p className="sidebar__error"> We are sorry ,but server is not responding please try to reconnect later.</p> 
                     : <div className="user-section"> 
                         {this.renderCorrectPart()} 
                         <footer className="user-section__legal">This page was created and designed by Jakub Žovák.</footer>

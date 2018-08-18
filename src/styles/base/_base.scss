@@ -12,9 +12,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
-
-  overflow: hidden; // <-- overflow hidden stops verticall scrollbar from showing up -
-  // - (but it can probbaly stops scorllbar from appearing at all)
+  background-color: orangered;
 }
 
 body {
@@ -32,10 +30,11 @@ body {
   font-size: $m-size;
   line-height: 1.6;
 
-  min-height: 100vh;
-  overflow: hidden; // <-- overflow hidden stops verticall scrollbar from showing up
-    // - (but it can probbaly stops scorllbar from appearing at all)
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  min-height: 100vh;
 }
 
 button {

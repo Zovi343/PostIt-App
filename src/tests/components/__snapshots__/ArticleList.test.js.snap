@@ -1,74 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ArticleList correctly 1`] = `
-<div>
-  <div>
-    <Connect(ArticleListFilter) />
-    <ol>
-      <ArticleListItem
-        _creatorId="343"
-        _id="1"
-        comments={
-          Array [
-            Object {
-              "_id": "1a",
-              "comment": "Something to test?",
-              "createdAt": "1.1.1970",
-            },
-          ]
-        }
-        createdAt="1.1.1970"
-        key="1"
-        likes={
-          Array [
-            "343",
-          ]
-        }
-        text="Political info"
-        title="Breaking news"
-      />
-      <ArticleListItem
-        _creatorId="343"
-        _id="2"
-        comments={Array []}
-        createdAt="28.12.1969"
-        key="2"
-        likes={Array []}
-        text="Are going to conqver world"
-        title="New graphene chips"
-      />
-      <ArticleListItem
-        _creatorId="someOtherId"
-        _id="3"
-        comments={Array []}
-        createdAt="5.1.1970"
-        key="3"
-        likes={Array []}
-        text="Hydrogen powered ship is going to sail"
-        title="Hydrogen revolution?"
-      />
-    </ol>
-  </div>
+<div
+  className="main-content"
+>
+  <Connect(ArticleListFilter) />
+  <ol
+    className="list"
+  >
+    <ArticleListItem
+      _creatorId="someOtherId"
+      _id="3"
+      comments={Array []}
+      createdAt="5.1.1970"
+      key="3"
+      likes={Array []}
+      text="Hydrogen powered ship is going to sail"
+      title="Hydrogen revolution?"
+    />
+    <ArticleListItem
+      _creatorId="343"
+      _id="2"
+      comments={Array []}
+      createdAt="28.12.1969"
+      key="2"
+      likes={Array []}
+      text="Are going to conqver world"
+      title="New graphene chips"
+    />
+    <ArticleListItem
+      _creatorId="343"
+      _id="1"
+      comments={
+        Array [
+          Object {
+            "_id": "1a",
+            "comment": "Something to test?",
+            "createdAt": "1.1.1970",
+          },
+        ]
+      }
+      createdAt="1.1.1970"
+      key="1"
+      likes={
+        Array [
+          "343",
+        ]
+      }
+      text="Political info"
+      title="Breaking news"
+    />
+  </ol>
 </div>
 `;
 
 exports[`should render error message if server is down 1`] = `
-<div>
-  <h1>
-    Server is down please try reconnect later 
-  </h1>
+<div
+  className="main-content"
+>
+  <Connect(ArticleListFilter) />
+  <ol
+    className="list"
+  >
+    <p>
+       No articles fulfill these search conditions. 
+    </p>
+  </ol>
 </div>
 `;
 
 exports[`should render message if no articles are rendering  1`] = `
-<div>
-  <div>
-    <Connect(ArticleListFilter) />
-    <ol>
-      <p>
-         No articles fulfill these search conditions. 
-      </p>
-    </ol>
-  </div>
+<div
+  className="main-content"
+>
+  <Connect(ArticleListFilter) />
+  <ol
+    className="list"
+  >
+    <p>
+       No articles fulfill these search conditions. 
+    </p>
+  </ol>
 </div>
 `;

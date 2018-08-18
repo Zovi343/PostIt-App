@@ -1,14 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render MainPage correctly 1`] = `
-<div>
+<header
+  className="header"
+>
   <Link
+    className="header__title"
     replace={false}
     to="/"
   >
     <h1>
-      PostIt!
+      PostIt
+      <span
+        className="header__exclamation"
+      >
+        !
+      </span>
     </h1>
   </Link>
-</div>
+</header>
 `;

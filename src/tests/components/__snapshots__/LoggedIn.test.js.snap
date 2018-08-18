@@ -1,22 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should redner LoggedIn correctly 1`] = `
-<div>
-  <h3>
-    Logged In As:
-  </h3>
-  <p>
-    Mark
-  </p>
-  <Link
-    replace={false}
-    to="/create"
+<div
+  className="logged-in"
+>
+  <div
+    className="logged-in__group u-margin-bottom-medium"
   >
-    <button>
-      Create Article
-    </button>
-  </Link>
+    <h2
+      className="u-margin-bottom-small"
+    >
+      Logged In As:
+    </h2>
+    <p
+      className="user"
+    >
+       
+      <Component
+        className="user__icon"
+      />
+       
+      Mark
+    </p>
+  </div>
   <button
+    className="logged-in__group btn btn--green"
+  >
+    Create Article
+  </button>
+  <p
+    className="logged-in__group"
+  >
+    OR
+  </p>
+  <button
+    className="logged-in__group btn btn--white"
     onClick={[Function]}
   >
     Logout
