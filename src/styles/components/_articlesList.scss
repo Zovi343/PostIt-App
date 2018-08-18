@@ -1,6 +1,6 @@
 
 .filter {
-    background-color: #e8e5e5;
+    background-color: $color-grey-light-3-obscure;
     border-bottom: solid 1px $color-grey-light-4;
     height: 10%;
     padding: 1rem;
@@ -40,8 +40,9 @@
 }
 
 .list {
-    overflow-y: scroll;
+    background-color: darken($color-grey-light-3, 2%);
     height: 90%;
+    overflow-y: scroll;
 
     //// Scroll bar style ////*/
 

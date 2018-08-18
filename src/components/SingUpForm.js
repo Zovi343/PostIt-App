@@ -60,7 +60,7 @@ class SingUpForm extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input className="form__input" id="password" onChange={this.onPasswordChange} placeholder="Password" type="password" value={this.state.password} required/>
                     </div>
-                    <div className="form__group u-margin-bottom-medium">
+                    <div className="form__group u-margin-bottom-large">
                         <label htmlFor="password">Repeat Password</label>
                         <input  className="form__input" onChange={this.onPasswordAgainChange} placeholder="Repeat Password" type="password" value={this.state.passwordAgain} required/>
                     </div>

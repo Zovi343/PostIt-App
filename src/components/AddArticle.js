@@ -11,8 +11,8 @@ export class AddArticle extends React.Component {
     };
     render () {
         return ( 
-        <div>
-            <h2>Creating Article</h2>
+        <div className="main-content">
+            <h2 className="add-edit-part u-margin-bottom-medium">Creating Article</h2>
             <ArticleForm onSubmit={this.onSubmit} />
         </div>
         );

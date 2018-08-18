@@ -23,7 +23,7 @@ class ArticleForm extends React.Component {
     onSubmit = (e) => {
         e.preventDefault();
         if (this.state.title.trim().length < 3 || this.state.text.trim().length < 3) {
-            this.setState(() => ({ error: 'Your title and text must contain at least 3 characters' }))
+            this.setState(() => ({ error: 'Your title and text must contain at least 3 characters!' }))
         } else {
             this.props.onSubmit({
                 title: this.state.title,
@@ -34,21 +34,29 @@ class ArticleForm extends React.Component {
     }
     render () {
        return ( 
-            <form onSubmit={this.onSubmit}> 
-                {this.state.error && <p>{this.state.error}</p>}
+            <form className="add-edit-form" onSubmit={this.onSubmit}> 
+                <label htmlFor="title">Title</label>
                 <input 
+                    className="add-edit-form__element"
+                    id="title"
                     onChange={this.onTitleChange} 
                     placeholder="Title" 
                     type="text" 
                     value={this.state.title}
                 />
-                <textarea 
+                <label htmlFor="text">Text</label>
+                <textarea
+                    className="add-edit-form__element"
+                    id="text"
                     onChange={this.onTextChange}
                     placeholder="Add text for your article"
                     value={this.state.text}
                 >
                 </textarea>
-                <input type="submit" value="Save Article" />
+                <div className="add-edit-form__last-group">
+                    <input className="add-edit-form__element btn btn--green" type="submit" value="Save Article" />
+                    {this.state.error && <p>{this.state.error}</p>}
+                </div>
             </form>
        );
     }

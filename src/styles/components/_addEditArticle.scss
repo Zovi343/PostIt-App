@@ -1,0 +1,68 @@
+.add-edit-part {
+    padding: 1rem;
+    background-color: $color-grey-light-3-obscure;
+    border-bottom: solid 1px $color-grey-light-4;
+
+    &__remove {
+        margin-left: 2rem;
+    }
+}
+
+.add-edit-form {
+    flex-direction: column;
+    margin-left: 2rem;
+
+    align-items: flex-start;
+    display: flex;
+
+    &__element {
+        margin-bottom: 2rem;
+    }
+
+    label {
+        font-weight: 600;
+    }
+
+    input[type=text] {
+        margin-bottom: 2rem;
+        color: $color-grey-dark-1;
+        border: none;
+        border-radius: 3px;
+        font-family: inherit;
+        font-size: 1.6rem;
+        padding: 0.7rem 1rem;
+        width: 50%;
+
+        &:focus {
+            outline: none;
+        }
+
+        &::-webkit-input-placeholder {
+            color: $color-grey-dark-3;
+        }
+        
+    }
+
+    textarea {
+        border-radius: 3px;
+        border: none;
+        height: 20rem;
+        width: 70%;
+        margin-bottom: 2rem;
+        resize: none;
+        padding: 1rem;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__last-group {
+        display: flex;
+
+        p {
+            margin-left: 2rem;
+        }
+    }
+
+}
