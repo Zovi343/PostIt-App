@@ -62,11 +62,7 @@ export class ViewArticle extends React.Component {
                                 <p>Posted by: {this.props.article.creator} on: {this.props.article.createdAt}</p>
                             </div>
                             <p className="article-view__text">{this.props.article.text}</p>
-                            <div className="article-view__edit">
-                                <button className="btn btn--white" onClick={this.onClickEdit} disabled={this.editingAllowed()}>Edit Article</button>
-                                {this.props.article.editedAt && <p>Edited on: {this.props.article.createdAt}</p>}
-                            </div>
-                            <div className="article-view__rating">
+                            <div className="article-view__under-text">
                                 <div 
                                 className="rating-like">
                                     <button 
@@ -80,6 +76,12 @@ export class ViewArticle extends React.Component {
                                         {this.props.article.likes.length}
                                     </p>
                                 </div>
+                                <div className="article-view__edit">
+                                    <button className="btn btn--white" onClick={this.onClickEdit} disabled={this.editingAllowed()}>Edit Article</button>
+                                    {this.props.article.editedAt && <p>Edited on: {this.props.article.createdAt}</p>}
+                                </div>
+                            </div>
+                            <div className="article-view__comment">
                                 <CommentArticle likeOrCommentAllowed={this.commentAllowed()} onSubmit={this.onSubmit} />
                             </div>
                             <CommentList userId={this.props.userId} onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>

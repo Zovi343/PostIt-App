@@ -67,7 +67,7 @@ class SingUpForm extends React.Component {
                     <input className="btn btn--green" type="submit" value="Sign Up" />
                 </form>
                 <p className="not-logged-in__group" >OR</p>
-                <button className="not-logged-in__group btn btn--white" onClick={this.props.changeForm}>Login</button>
+                <button className="not-logged-in__group btn btn--white" onClick={this.props.changeForm}>Log In</button>
                 { 
                 this.state.error
                     ? <p>{this.state.error}</p>

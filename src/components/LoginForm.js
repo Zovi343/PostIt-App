@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
                         <label htmlFor="password">Password</label>
                         <input className="form__input" id="password" onChange={this.onPasswordChange} placeholder="Password" type="password" value={this.state.password} required/>
                     </div>
-                    <input className="btn btn--white" type="submit" value="Login" />
+                    <input className="btn btn--white" type="submit" value="Log In" />
                 </form>
                 <p className="not-logged-in__group" >OR</p>
                 <button className="not-logged-in__group btn btn--green" onClick={this.props.changeForm}>Sign Up!</button>

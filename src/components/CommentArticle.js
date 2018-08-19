@@ -31,12 +31,24 @@ class CommentArticle extends React.Component {
         return (
             <form className="comment-form" onSubmit={this.onSubmit}>
                 { this.state.error && <p>{this.state.error}</p>}
-                <textarea 
-                    onChange={this.onTextareaChange} 
-                    placeholder="What are your thoughts ?"
-                    value={this.state.comment}
-                >
-                </textarea>
+                {this.props.likeOrCommentAllowed 
+                  ? (
+                    <textarea 
+                        disabled={this.props.likeOrCommentAllowed}
+                        onChange={this.onTextareaChange} 
+                        placeholder="You need to Log In or Sign Up in order to comment articles."
+                        value={this.state.comment}
+                    >
+                    </textarea>)
+                  :( 
+                    <textarea 
+                        disabled={this.props.likeOrCommentAllowed}
+                        onChange={this.onTextareaChange} 
+                        placeholder="What are your thoughts ?"
+                        value={this.state.comment}
+                    >
+                    </textarea>
+                )}
                 <input className="btn btn--green" disabled={this.props.likeOrCommentAllowed} type="submit" value="Comment" />
             </form>
         );
