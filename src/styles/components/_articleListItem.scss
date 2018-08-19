@@ -13,6 +13,11 @@
     &:hover {
         background-color: $color-off-white;
     }
+
+    &:focus {
+        outline: none;
+        background-color: $color-off-white;        
+    }
     
     .creator-date {
         font-size: 1.5rem;

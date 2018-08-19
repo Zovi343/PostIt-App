@@ -15,11 +15,6 @@
         outline: none;
         transform: scale(0.95) translateY(0);
     }
-
-    &:focus {
-        transform: translateY(-3px);
-    }
-
 }
 
 .btn--green {
@@ -36,7 +31,7 @@
     &:disabled {
         background-color: $color-grey-dark-3;
         border: solid 2px $color-grey-dark-3; 
-        transform: translateY(0)
+        transform: translateY(0);
     }
 
     &:focus{
@@ -55,8 +50,40 @@
         color: $color-white;
     }
 
+    &:disabled {
+        color: $color-white;
+        background-color: $color-grey-dark-3;
+        border: solid 2px $color-grey-dark-3; 
+        transform: translateY(0)
+    }
+
     &:focus {
         background-color: $color-primary;
         color: $color-white;  
     }
+}
+
+.btn-like {
+    background: none;
+    border:none;
+    outline: none;
+    transition: all .3s ease;
+
+    &:hover {
+        transform: translateY(-2px) scale(1.1);
+    }
+
+    &:active {
+        transform: translateY(0) scale(1);
+    }
+
+    &:disabled {
+        cursor: default;
+        transform: translateY(0) scale(1);
+    }
+
+    &:focus {
+        background-color: $color-grey-light-3;
+    }
+    
 }

@@ -29,7 +29,7 @@ class CommentArticle extends React.Component {
     }
     render () {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form className="comment-form" onSubmit={this.onSubmit}>
                 { this.state.error && <p>{this.state.error}</p>}
                 <textarea 
                     onChange={this.onTextareaChange} 
@@ -37,7 +37,7 @@ class CommentArticle extends React.Component {
                     value={this.state.comment}
                 >
                 </textarea>
-                <input disabled={this.props.likeOrCommentAllowed} type="submit" value="Comment" />
+                <input className="btn btn--green" disabled={this.props.likeOrCommentAllowed} type="submit" value="Comment" />
             </form>
         );
     };

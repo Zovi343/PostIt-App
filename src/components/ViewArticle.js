@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CommentArticle from './CommentArticle';
 import CommentList from './CommentList';
-import { IoIosHeart } from "react-icons/io";
+import { IoIosHeart, IoIosHeartEmpty } from "react-icons/io";
 import { startAddLike, startRemoveLike , startCommentArticle, startRemoveComment } from '../actions/articlesActions'; 
 
 export class ViewArticle extends React.Component {
@@ -32,12 +32,19 @@ export class ViewArticle extends React.Component {
     };
     likeStyle = () => {
         if (this.props.article.likes.includes(this.props.userId)){
-            return { color: 'red' }
+            return  ( <IoIosHeart className="icon icon--loggedin" />);
         } else {
-            return { color: 'grey' }
+            return ( <IoIosHeartEmpty className="icon icon--loggedin"  />);;
         }
     };
-    likeOrCommentAllowed = () => {
+    commentAllowed = () => {
+        if (!!this.props.userId){
+            return false
+        } else {
+            return true
+        }
+    };
+    likeAllowed = () => {
         if (!!this.props.userId){
             return false
         } else {
@@ -46,17 +53,35 @@ export class ViewArticle extends React.Component {
     };
     render() {
         return (
-            <div>
+            <div className="main-content">
                 {
                     !!this.props.article ? (
-                        <div>
-                            <button onClick={this.onClickEdit} disabled={this.editingAllowed()}>Edit Article</button>
-                            <h2>{this.props.article.title}</h2>
-                            <p>Posted by:{this.props.article.creator} at: {this.props.article.createdAt}</p>
-                            {this.props.article.editedAt && <p>Edited at: {this.props.article.createdAt}</p>}
-                            <p>{this.props.article.text}</p>
-                            <CommentArticle likeOrCommentAllowed={this.likeOrCommentAllowed()} onSubmit={this.onSubmit} />
-                            <button disabled={this.likeOrCommentAllowed()}  onClick={this.onClickLike}><IoIosHeart style={this.likeStyle()}/></button><p>Number of Likes: {this.props.article.likes.length}</p>
+                        <div className="article-view">
+                            <div className="article-view__top">
+                                <h2 className="article-view__header">{this.props.article.title}</h2>
+                                <p>Posted by: {this.props.article.creator} on: {this.props.article.createdAt}</p>
+                            </div>
+                            <p className="article-view__text">{this.props.article.text}</p>
+                            <div className="article-view__edit">
+                                <button className="btn btn--white" onClick={this.onClickEdit} disabled={this.editingAllowed()}>Edit Article</button>
+                                {this.props.article.editedAt && <p>Edited on: {this.props.article.createdAt}</p>}
+                            </div>
+                            <div className="article-view__rating">
+                                <div 
+                                className="rating-like">
+                                    <button 
+                                    className="btn-like" 
+                                    disabled={this.likeAllowed()}  
+                                    onClick={this.onClickLike}
+                                    >
+                                        { !!this.props.userId ? this.likeStyle() : <IoIosHeart className="icon icon--loggedout" /> }
+                                    </button>
+                                    <p>
+                                        {this.props.article.likes.length}
+                                    </p>
+                                </div>
+                                <CommentArticle likeOrCommentAllowed={this.commentAllowed()} onSubmit={this.onSubmit} />
+                            </div>
                             <CommentList userId={this.props.userId} onClickDeleteComment={this.onClickDeleteComment} comments={this.props.article.comments}/>
                         </div> 
                     ) : (
