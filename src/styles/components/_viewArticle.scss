@@ -1,3 +1,8 @@
+.scroll-active {
+    overflow-y: scroll;
+
+    @include scrollbar;
+}
 .article-view {
     background-color: $color-white;
     border-radius: 3px;
@@ -90,10 +95,6 @@
         &:focus {
             outline-color: $color-grey-dark-2; 
         }
-
-        &:disabled {
-            
-        }
     }
 
     .btn {
@@ -103,4 +104,5 @@
             cursor: default;
         }
     }
+
 }

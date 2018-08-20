@@ -1,0 +1,47 @@
+.comment-section {
+    margin: 1rem 2rem;
+}
+
+.comment-list {
+    list-style: none;
+    
+}
+
+.comment-list-item {
+    padding: 1rem;
+    border-bottom: solid 1px $color-grey-dark-3;
+
+    &:last-child {
+        border-bottom: none;
+    }
+    
+    &__top {
+        margin-bottom: 1rem;
+
+        display: flex;
+        justify-content: space-between;
+
+        p {
+            font-size: 1.4rem;
+            color: $color-grey-dark-2;
+        }
+
+        .btn {
+            font-size: 1.4rem;
+            font-weight: 400;
+            padding: .1rem 0.6rem;
+        
+        }
+
+        .btn--white {
+            border: solid 1.5px $color-primary;
+            
+            &:disabled {
+                background-color: $color-grey-dark-3;
+                border: solid 1px $color-grey-dark-3; 
+                transform: translateY(0);
+            }
+        }
+
+    }
+}

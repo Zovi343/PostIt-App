@@ -1,0 +1,26 @@
+//// Scroll bar style ////*/
+@mixin scrollbar {
+    
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+        width: 14px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: $color-grey-light-2; 
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $color-grey-dark-2;
+        border-radius: 10px; 
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: $color-red; 
+    }
+}

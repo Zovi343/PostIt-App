@@ -7,17 +7,22 @@ class CommentListItem extends React.Component {
     };
     allowedDeleteComment = () => {
       if(this.props._creatorId === this.props.userId) {
-          return false;
-      } else {
           return true;
+      } else {
+          return false;
       }
     };
     render () { 
         return  (
-                <li>
-                    <p>Posted by: {this.props.creator} created at:{this.props.createdAt}</p>
+                <li className="comment-list-item">
+                    <div className="comment-list-item__top">
+                        <p>Posted by: {this.props.creator} created on:{this.props.createdAt}</p>
+                       { this.allowedDeleteComment()
+                            ? <button className="btn btn--white" onClick={this.onDelete}>Delete</button>
+                            : <div> </div>
+                        }
+                    </div>
                     <p>{this.props.text}</p>
-                    <button onClick={this.onDelete} disabled={this.allowedDeleteComment()}>Delete</button>
                 </li>
             )
     }
