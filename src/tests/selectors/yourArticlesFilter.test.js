@@ -15,7 +15,7 @@ test('should return articles which _creatorId match userID', () => {
 });
 
 test('should return articles which _creatorId match userID and they also match text in search field', () => {
-    const filter = { yourArticles: true, text: "New"};
+    const filter = { yourArticles: true, text: "chips"};
     const filteredArticles = yourArticlesFilter(articles, user.id, filter);
     expect(filteredArticles).toEqual([articles[1]]);
 });
