@@ -27,11 +27,15 @@ export class ArticleListFilter extends React.Component {
     onTextFilterChange = (e) => {
         this.props.setTextFilter(e.target.value);
     }
+    onSubmit = (e) => {
+        //This is here in order to prevent user on mobile from sunmiting form
+        e.preventDefault();
+    }
     
     render () { 
         return  ( 
             <div className="filter">
-                <form className="filter__group filter-form"> 
+                <form onSubmit={this.onSubmit} className="filter__group filter-form"> 
                     <input
                         className="filter-form__input"
                         onChange={this.onTextFilterChange} 
