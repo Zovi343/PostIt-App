@@ -12,6 +12,18 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%;
+
+  @include respond(tab-land) { //width < 1200 ?
+    font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%
+  }
+  
+  @include respond(tab-port) {// width < 900?
+    font-size: 50%; // 1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) { //width < 900 ?  // <-- this guy here ca n be both on top and also at the bottom because it min-width medai query nad not max-width as the others
+    font-size: 75%; // 1rem = 12 , 12/16 = 75%
+  }
 }
 
 body {

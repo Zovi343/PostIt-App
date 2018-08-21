@@ -35,7 +35,7 @@ class SingUpForm extends React.Component {
 
         if (this.state.name.trim().length < 3 || this.state.password.trim().length < 6 ) {
             this.setState(() => ({
-                error: 'Your name must contain at least 3 characters and password must contain at least 6'
+                error: 'Your name must contain at least 3 characters and password must contain at least 6 characters.'
             }));
         } else if (this.state.password !== this.state.passwordAgain) {
             this.setState(() => ({
@@ -70,9 +70,9 @@ class SingUpForm extends React.Component {
                 <button className="not-logged-in__group btn btn--white" onClick={this.props.changeForm}>Log In</button>
                 { 
                 this.state.error
-                    ? <p>{this.state.error}</p>
+                    ? <p className="auth-error">{this.state.error}</p>
                     :  this.props.authFailed && !this.props.authFailed.login
-                        ? <p>{this.props.authFailed.error}</p>
+                        ? <p className="auth-error">{this.props.authFailed.error}</p>
                         : <p></p>
                 }
             </div>

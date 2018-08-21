@@ -49,13 +49,9 @@ export class UserSection extends React.Component {
         return (
             <div className="sidebar">
                 { 
-                    this.props.networkError 
-                    ? <p className="sidebar__error"> We are sorry ,but server is not responding please try to reconnect later.</p> 
-                    : <div className="user-section"> 
-                        {this.renderCorrectPart()} 
-                        <footer className="user-section__legal">This page was created and designed by Jakub Žovák.</footer>
-                    </div> 
+                this.renderCorrectPart()
                 }
+                <footer className="legal">This page was created and designed by Jakub Žovák.</footer>
             </div>
         );
     };

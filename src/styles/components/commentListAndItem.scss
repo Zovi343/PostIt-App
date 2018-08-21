@@ -21,6 +21,13 @@
         display: flex;
         justify-content: space-between;
 
+        // 350 px
+        @media only screen and (max-width: 21.875em) {
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
         p {
             font-size: 1.4rem;
             color: $color-grey-dark-2;
@@ -30,6 +37,10 @@
             font-size: 1.4rem;
             font-weight: 400;
             padding: .1rem 0.6rem;
+
+            @media only screen and (max-width: 21.875em) {
+                margin-top: 0.2rem;
+            }
         
         }
 

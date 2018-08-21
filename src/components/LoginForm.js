@@ -39,9 +39,9 @@ class LoginForm extends React.Component {
                     <input className="btn btn--white" type="submit" value="Log In" />
                 </form>
                 <p className="not-logged-in__group" >OR</p>
-                <button className="not-logged-in__group btn btn--green" onClick={this.props.changeForm}>Sign Up!</button>
+                <button className="not-logged-in__group btn btn--green" onClick={this.props.changeForm}>Sign Up</button>
                 {/*This checks if the error with authentication exists and if it occured on this form*/}
-                { (this.props.authFailed && this.props.authFailed.login ) && <p>{this.props.authFailed.error}</p> }
+                { (this.props.authFailed && this.props.authFailed.login ) && <p className="auth-error">{this.props.authFailed.error}</p> }
             </div>
         );
     };

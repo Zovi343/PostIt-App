@@ -5,13 +5,15 @@ import ArticleListFilter from './ArticleListFilter';
 import yourArticlesFilter from '../selectors/yourArticlesFilter';
 
 export const ArticleList = (props) => (
-    <div className="main-content">
+    <div className="main-content responsive-scroll">
         <ArticleListFilter />
         <ol className="list">
             {
-                (props.articles.length === 0) 
-                ? <p> No articles fulfill these search conditions. </p>
-                : props.articles.map((article) => <ArticleListItem key={article._id} {...article} />).reverse()
+            !!props.networkError
+                ? <p className="sidebar__error"> We are sorry ,but server is not responding please try to reconnect later.</p>   
+                : (props.articles.length === 0) 
+                    ? <p> No articles fulfill these search conditions. </p>
+                    : props.articles.map((article) => <ArticleListItem key={article._id} {...article} />).reverse()
             }
         </ol>
     </div>
@@ -20,6 +22,7 @@ export const ArticleList = (props) => (
 
 const mapStateToProps = (state) => ({
     articles: yourArticlesFilter(state.articles, state.auth.id, state.filter),
+    networkError: state.networkError
 });
 
 export default connect(mapStateToProps)(ArticleList);
