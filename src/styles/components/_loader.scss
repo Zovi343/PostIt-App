@@ -1,0 +1,12 @@
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.loader__image {
+    background-image: transparent;
+    height: 12rem;
+    width: 12rem;
+}

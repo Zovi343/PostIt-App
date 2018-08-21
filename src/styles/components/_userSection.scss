@@ -58,11 +58,14 @@
     }
 }
 
-@include respond (tab-port) {
-   .auth-error {
-       margin-top: 1rem;
-       margin-left: 1rem;
-   }
+.auth-error {
+    margin: 0 1.5rem;
+
+    @include respond (tab-port) {
+           margin-top: 1rem;
+           margin-left: 1rem;
+           margin-right: 0;
+    }
 }
 
 .form {

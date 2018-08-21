@@ -37,6 +37,10 @@ class SingUpForm extends React.Component {
             this.setState(() => ({
                 error: 'Your name must contain at least 3 characters and password must contain at least 6 characters.'
             }));
+        } else if (this.state.name.trim().length > 10) {
+            this.setState(() => ({
+                error: 'Your name can contain only up to 10 characters.'
+            }))
         } else if (this.state.password !== this.state.passwordAgain) {
             this.setState(() => ({
                 error: 'Passwords do not match!'
