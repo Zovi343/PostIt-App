@@ -63,3 +63,12 @@
         flex-basis: auto;
     }
 }
+
+
+@include respond(tab-port) {
+    .responsive-scroll{
+        overflow-y: scroll;
+    
+        @include scrollbar;
+    }
+}

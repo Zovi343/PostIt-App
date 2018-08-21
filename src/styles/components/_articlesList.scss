@@ -75,6 +75,11 @@
     height: 90%;
     overflow-y: scroll;
 
+    @include respond(tab-port) {
+        overflow-y: unset;
+    }
+
+
     @include scrollbar;
 }
 
