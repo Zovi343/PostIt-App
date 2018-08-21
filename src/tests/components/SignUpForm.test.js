@@ -38,7 +38,7 @@ test('should not call this.props.onSubmit if name or passwords do not have lengt
     wrapper.find('form').simulate('submit' ,{
         preventDefault: () => {}
     });
-    expect(wrapper.state('error')).toBe('Your name must contain at least 3 characters and password must contain at least 6');
+    expect(wrapper.state('error')).toBe('Your name must contain at least 3 characters and password must contain at least 6 characters.');
 });
 
 test('should not call this.props.onSubmit if passwords do not mathc', () => {

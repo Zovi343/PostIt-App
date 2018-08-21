@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render EditArticle correctly 1`] = `
-<div>
+<div
+  className="main-content"
+>
   <div>
-    <h2>
+    <h2
+      className="add-edit-part u-margin-bottom-medium"
+    >
       Editing Article
     </h2>
     <ArticleForm
@@ -29,6 +33,7 @@ exports[`should render EditArticle correctly 1`] = `
       onSubmit={[Function]}
     />
     <button
+      className=" add-edit-part__remove btn btn--white"
       onClick={[Function]}
     >
       Remove Article
@@ -38,7 +43,9 @@ exports[`should render EditArticle correctly 1`] = `
 `;
 
 exports[`should render error when article does note exist 1`] = `
-<div>
+<div
+  className="main-content"
+>
   <p>
     You haven't created this article
   </p>
@@ -46,7 +53,9 @@ exports[`should render error when article does note exist 1`] = `
 `;
 
 exports[`should render error when articleId does not match with userId 1`] = `
-<div>
+<div
+  className="main-content"
+>
   <p>
     You haven't created this article
   </p>

@@ -5,11 +5,9 @@ exports[`should redner LoggedIn correctly 1`] = `
   className="logged-in"
 >
   <div
-    className="logged-in__group u-margin-bottom-medium"
+    className="logged-in__group"
   >
-    <h2
-      className="u-margin-bottom-small"
-    >
+    <h2>
       Logged In As:
     </h2>
     <p

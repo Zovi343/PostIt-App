@@ -1,18 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render CommentListItem correctly 1`] = `
-<li>
-  <p>
-    Posted by: 
-     created at:
-    1.1.1970
-  </p>
-  <p />
-  <button
-    disabled={false}
-    onClick={[Function]}
+exports[`button should not exist if creatorId and userId do not match! 1`] = `
+<li
+  className="comment-list-item"
+>
+  <div
+    className="comment-list-item__top"
   >
-    Delete
-  </button>
+    <p>
+      Posted by: 
+       created on:
+      1.1.1970
+    </p>
+    <div>
+       
+    </div>
+  </div>
+  <p />
+</li>
+`;
+
+exports[`should render CommentListItem correctly 1`] = `
+<li
+  className="comment-list-item"
+>
+  <div
+    className="comment-list-item__top"
+  >
+    <p>
+      Posted by: 
+       created on:
+      1.1.1970
+    </p>
+    <button
+      className="btn btn--white"
+      onClick={[Function]}
+    >
+      Delete
+    </button>
+  </div>
+  <p />
 </li>
 `;

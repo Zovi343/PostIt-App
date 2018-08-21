@@ -15,7 +15,7 @@ exports[`should render ArticleListItem correctly 1`] = `
     className="creator-date u-margin-bottom-smallest"
   >
     Posted by: 
-     at: 
+     on: 
     1.1.1970
   </p>
   <div

@@ -1,13 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render CommentList correctly 1`] = `
-<ol>
-  <CommentListItem
-    _id="1a"
-    comment="Something to test?"
-    createdAt="1.1.1970"
-    key="1a"
-    onClickDeleteComment={[Function]}
-  />
-</ol>
+<div
+  className="comment-section"
+>
+  <h3>
+    Comment Section:
+  </h3>
+  <ol
+    className="comment-list"
+  >
+    <CommentListItem
+      _id="1a"
+      comment="Something to test?"
+      createdAt="1.1.1970"
+      key="1a"
+      onClickDeleteComment={[Function]}
+    />
+  </ol>
+</div>
 `;

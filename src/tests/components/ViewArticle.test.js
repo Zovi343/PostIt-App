@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { ViewArticle } from '../../components/ViewArticle';
+import { shallow } from 'enzyme';
 import articles from '../fixtures/articlesFixtures';
 import user from '../fixtures/usersFixtures';
 
@@ -42,23 +42,44 @@ test('should handle startRemoveComment', () => {
 });
 
 test('should handle startAddLike on clicking heart button', () => {
+    history = { push: jest.fn() };
     wrapper = shallow(<ViewArticle 
         article={articles[1]} 
         startAddLike={startAddLike}
         startRemoveLike={startRemoveLike}
         startCommentArticle={startCommentArticle}
         startRemoveComment={startRemoveComment}
+        history={history}
         userId={user.id}
         />
     );
-    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('button').at(0).simulate('click');
     expect(startAddLike).toHaveBeenLastCalledWith(articles[1]._id, user.id)
 });
 
 test('should handle startRemoveLike on clicking heart button', () => {
-    wrapper.find('button').at(1).simulate('click');
+    wrapper.find('button').at(0).simulate('click');
     expect(startRemoveLike).toHaveBeenLastCalledWith(articles[0]._id, user.id)
 });
+
+
+// Toto pravdepodobne nefunguje pretoze to nemam definovane ako public route tak ako to ma Andrew v expensify 
+/////////
+// test('should handle clicking on Edit Article button', () => {
+//     history = { push: jest.fn() };
+//     wrapper = shallow(<ViewArticle 
+//         article={articles[1]} 
+//         startAddLike={startAddLike}
+//         startRemoveLike={startRemoveLike}
+//         startCommentArticle={startCommentArticle}
+//         startRemoveComment={startRemoveComment}
+//         history={history}
+//         userId={user.id}
+//         />
+//     );
+//     wrapper.find('button').at(1).simulate('click');
+//     expect(history.push).toHaveBeenLastCalledWith(`/edit/${articles[1]._id}`);
+// });
 
 
 test('editing should be disabled if userId does not match  article._creatorID', () => {
@@ -71,7 +92,7 @@ test('editing should be disabled if userId does not match  article._creatorID', 
         userId={'999'}
         />
     );
-    expect(wrapper.find('button').at(0).props().disabled).toBe(true);
+    expect(wrapper.find('button').at(1).props().disabled).toBe(true);
 });
 
 

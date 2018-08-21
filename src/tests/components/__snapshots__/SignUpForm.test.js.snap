@@ -45,7 +45,7 @@ exports[`should render SignUpForm correctly 1`] = `
       />
     </div>
     <div
-      className="form__group u-margin-bottom-medium"
+      className="form__group u-margin-bottom-large"
     >
       <label
         htmlFor="password"
@@ -76,7 +76,7 @@ exports[`should render SignUpForm correctly 1`] = `
     className="not-logged-in__group btn btn--white"
     onClick={[Function]}
   >
-    Login
+    Log In
   </button>
   <p />
 </div>
@@ -127,7 +127,7 @@ exports[`should render error when authFailed is passed down with value 1`] = `
       />
     </div>
     <div
-      className="form__group u-margin-bottom-medium"
+      className="form__group u-margin-bottom-large"
     >
       <label
         htmlFor="password"
@@ -158,9 +158,11 @@ exports[`should render error when authFailed is passed down with value 1`] = `
     className="not-logged-in__group btn btn--white"
     onClick={[Function]}
   >
-    Login
+    Log In
   </button>
-  <p>
+  <p
+    className="auth-error"
+  >
     This name already exists
   </p>
 </div>

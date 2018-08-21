@@ -2,44 +2,84 @@
 
 exports[`should render ArticleForm correctly with article data 1`] = `
 <form
+  className="add-edit-form"
   onSubmit={[Function]}
 >
+  <label
+    htmlFor="title"
+  >
+    Title
+  </label>
   <input
+    className="add-edit-form__element"
+    id="title"
     onChange={[Function]}
     placeholder="Title"
     type="text"
     value="Breaking news"
   />
+  <label
+    htmlFor="text"
+  >
+    Text
+  </label>
   <textarea
+    className="add-edit-form__element"
+    id="text"
     onChange={[Function]}
     placeholder="Add text for your article"
     value="Political info"
   />
-  <input
-    type="submit"
-    value="Save Article"
-  />
+  <div
+    className="add-edit-form__last-group"
+  >
+    <input
+      className="add-edit-form__element btn btn--green"
+      type="submit"
+      value="Save Article"
+    />
+  </div>
 </form>
 `;
 
 exports[`should render ArticleForm correctly with default data 1`] = `
 <form
+  className="add-edit-form"
   onSubmit={[Function]}
 >
+  <label
+    htmlFor="title"
+  >
+    Title
+  </label>
   <input
+    className="add-edit-form__element"
+    id="title"
     onChange={[Function]}
     placeholder="Title"
     type="text"
     value=""
   />
+  <label
+    htmlFor="text"
+  >
+    Text
+  </label>
   <textarea
+    className="add-edit-form__element"
+    id="text"
     onChange={[Function]}
     placeholder="Add text for your article"
     value=""
   />
-  <input
-    type="submit"
-    value="Save Article"
-  />
+  <div
+    className="add-edit-form__last-group"
+  >
+    <input
+      className="add-edit-form__element btn btn--green"
+      type="submit"
+      value="Save Article"
+    />
+  </div>
 </form>
 `;

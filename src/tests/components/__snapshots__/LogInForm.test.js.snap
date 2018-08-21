@@ -27,7 +27,7 @@ exports[`should render LogInForm correctly 1`] = `
       />
     </div>
     <div
-      className="form__group u-margin-bottom-medium"
+      className="form__group u-margin-bottom-large"
     >
       <label
         htmlFor="password"
@@ -47,7 +47,7 @@ exports[`should render LogInForm correctly 1`] = `
     <input
       className="btn btn--white"
       type="submit"
-      value="Login"
+      value="Log In"
     />
   </form>
   <p
@@ -59,7 +59,7 @@ exports[`should render LogInForm correctly 1`] = `
     className="not-logged-in__group btn btn--green"
     onClick={[Function]}
   >
-    Sign Up!
+    Sign Up
   </button>
 </div>
 `;
@@ -91,7 +91,7 @@ exports[`should render error when authFailed is passed down with value 1`] = `
       />
     </div>
     <div
-      className="form__group u-margin-bottom-medium"
+      className="form__group u-margin-bottom-large"
     >
       <label
         htmlFor="password"
@@ -111,7 +111,7 @@ exports[`should render error when authFailed is passed down with value 1`] = `
     <input
       className="btn btn--white"
       type="submit"
-      value="Login"
+      value="Log In"
     />
   </form>
   <p
@@ -123,9 +123,11 @@ exports[`should render error when authFailed is passed down with value 1`] = `
     className="not-logged-in__group btn btn--green"
     onClick={[Function]}
   >
-    Sign Up!
+    Sign Up
   </button>
-  <p>
+  <p
+    className="auth-error"
+  >
     Wrong name or password.
   </p>
 </div>

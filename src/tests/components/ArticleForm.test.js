@@ -31,7 +31,7 @@ test('should print error when when  form is submitted with incorrect data', () =
     wrapper.find('form').simulate('submit', {
         preventDefault: () => {}
     });
-    expect(wrapper.state('error')).toBe('Your title and text must contain at least 3 characters');
+    expect(wrapper.state('error')).toBe('Your title and text must contain at least 3 characters!');
 });
 
 test('should change title on input onChange', () => {

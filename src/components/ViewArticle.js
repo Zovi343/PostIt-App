@@ -21,7 +21,7 @@ export class ViewArticle extends React.Component {
         }
     };
     onClickEdit = () => {
-        this.props.history.push(`/edit/${this.props.article._id}`)
+        this.props.history.push(`/edit/${this.props.article._id}`);
     };
     onClickLike = () => {
         if (this.props.article.likes.includes(this.props.userId)){

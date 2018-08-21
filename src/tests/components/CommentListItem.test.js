@@ -9,22 +9,7 @@ test('should render CommentListItem correctly', () => {
     expect(wrapper).toMatchSnapshot();
 });
 
-// If I would want to work this tests like in browser that means that I would not be able to simulate click when button is disabled I would need full DOM rendering instead of shallow rendering
-test('button should not be disabled and should handle onClickDeleteComment', () => {
-    const onClickDeleteComment = jest.fn();
-    const wrapper = shallow(<CommentListItem 
-                                onClickDeleteComment={onClickDeleteComment} 
-                                _creatorId ={user.id}
-                                userId ={user.id}
-                                {...articles[0].comments[0]}
-                            />
-                        );
-    expect(wrapper.find('button').at(0).props().disabled).toBe(false);
-    wrapper.find('button').simulate('click');
-    expect(onClickDeleteComment).toHaveBeenCalledWith(articles[0].comments[0]._id);
-});
-
-test('button should be disabled because creatorId and userId do not match!', () => {
+test('button should not exist if creatorId and userId do not match!', () => {
     const someId = 'kdmwqlqlkmd'
     const onClickDeleteComment = jest.fn();
     const wrapper = shallow(<CommentListItem 
@@ -34,5 +19,5 @@ test('button should be disabled because creatorId and userId do not match!', () 
                                 {...articles[0].comments[0]}
                             />
                         );
-    expect(wrapper.find('button').at(0).props().disabled).toBe(true);
+    expect(wrapper).toMatchSnapshot();
 });

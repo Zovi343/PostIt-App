@@ -1,45 +1,70 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ViewArticle correctly 1`] = `
-<div>
-  <div>
-    <button
-      disabled={false}
-      onClick={[Function]}
+<div
+  className="main-content scroll-active"
+>
+  <div
+    className="article-view"
+  >
+    <div
+      className="article-view__top"
     >
-      Edit Article
-    </button>
-    <h2>
-      Breaking news
-    </h2>
-    <p>
-      Posted by:
-       at: 
-      1.1.1970
-    </p>
-    <p>
+      <h2
+        className="article-view__header"
+      >
+        Breaking news
+      </h2>
+      <p>
+        Posted by: 
+         on: 
+        1.1.1970
+      </p>
+    </div>
+    <p
+      className="article-view__text"
+    >
       Political info
     </p>
-    <CommentArticle
-      likeOrCommentAllowed={false}
-      onSubmit={[Function]}
-    />
-    <button
-      disabled={false}
-      onClick={[Function]}
+    <div
+      className="article-view__under-text"
     >
-      <Component
-        style={
-          Object {
-            "color": "red",
-          }
-        }
+      <div
+        className="rating-like"
+      >
+        <button
+          className="btn-like"
+          disabled={false}
+          onClick={[Function]}
+        >
+          <Component
+            className="icon icon--loggedin"
+          />
+        </button>
+        <p>
+          1
+        </p>
+      </div>
+      <div
+        className="article-view__edit"
+      >
+        <button
+          className="btn btn--white"
+          disabled={false}
+          onClick={[Function]}
+        >
+          Edit Article
+        </button>
+      </div>
+    </div>
+    <div
+      className="article-view__comment"
+    >
+      <CommentArticle
+        likeOrCommentAllowed={false}
+        onSubmit={[Function]}
       />
-    </button>
-    <p>
-      Number of Likes: 
-      1
-    </p>
+    </div>
     <CommentList
       comments={
         Array [
@@ -58,7 +83,9 @@ exports[`should render ViewArticle correctly 1`] = `
 `;
 
 exports[`should render ViewArticle with error message  1`] = `
-<div>
+<div
+  className="main-content scroll-active"
+>
   <h2>
      This article doesn't exist! 
   </h2>
