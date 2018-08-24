@@ -2,7 +2,7 @@
 # PostIt-App
 
 The fully functional and fully responsive website which I built with React, Redux, React Router, Sass and Webpack.And I also wrote tests for this app with Jest.
-On this website you can post, remove, update articles. You can also view articles of others users and comment or like them.
+On this website you can post, remove, update articles. You can also view articles of other users and comment or like them.
 You can view this website online here: https://postit-right-now.herokuapp.com/
 
 ### Installing
