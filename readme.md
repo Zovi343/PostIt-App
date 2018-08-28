@@ -8,7 +8,7 @@ You can view this website online here: https://postit-right-now.herokuapp.com/
 ### Installing
 ```
 install dependencies:
-    yarn
+    yarn install
 ```
 
 ### Using app on locak development server
