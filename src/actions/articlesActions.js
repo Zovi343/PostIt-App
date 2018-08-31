@@ -10,7 +10,8 @@ export const startSetArticles = () => {
     return async (dispatch) => {
         try {
             const response = await axios.get('/articles');
-            dispatch(setArticles(response.data.allArticles));
+            console.log(response.data.sortedArticles);
+            dispatch(setArticles(response.data.sortedArticles));
             
         } catch (e) {
             if(e.message === 'Network Error'){

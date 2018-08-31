@@ -13,7 +13,7 @@ export const ArticleList = (props) => (
                 ? <p className="server-error"> We are sorry ,but server is not responding ,please try to reconnect later.</p>   
                 : (props.articles.length === 0) 
                     ? <p className="no-articles"> No articles fulfill these search conditions. </p>
-                    : props.articles.map((article) => <ArticleListItem key={article._id} {...article} />).reverse()
+                    : props.articles.map((article) => <ArticleListItem key={article._id} {...article} />)
             }
         </ol>
     </div>
