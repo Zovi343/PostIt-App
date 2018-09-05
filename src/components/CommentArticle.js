@@ -36,7 +36,7 @@ class CommentArticle extends React.Component {
                     <textarea 
                         disabled={this.props.likeOrCommentAllowed}
                         onChange={this.onTextareaChange} 
-                        placeholder="You need to Log In or Sign Up in order to comment articles."
+                        placeholder="You need to Log In or Sign Up in order to comment or like articles."
                         value={this.state.comment}
                     >
                     </textarea>)
