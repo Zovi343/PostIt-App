@@ -24,8 +24,8 @@ class CommentListItem extends React.Component {
                     </div>
                     <p>{this.props.text}</p>
                 </li>
-            )
-    }
+            );
+    };
 };
 
 export default CommentListItem;

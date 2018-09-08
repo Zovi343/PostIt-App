@@ -32,7 +32,7 @@ test('startSetArticle make axios.get request and dispatch setArticles action', a
     axios.get.mockImplementationOnce(() => 
     Promise.resolve({
         data: {
-            allArticles: articles
+            sortedArticles: articles
         }
     })
     );

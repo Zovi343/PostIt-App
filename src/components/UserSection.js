@@ -17,7 +17,7 @@ export class UserSection extends React.Component {
     };
     onCreateArticle = () => {
         history.push('/create');
-    }
+    };
     onLogout = () => {
         //this here ensures that user gets always redirected to the login section when logout(and not to the signup section)
         this.setState(() => ({
@@ -27,7 +27,7 @@ export class UserSection extends React.Component {
         //this  redirects the user in case he logs out while creating or edititng article
         if(window.location.href.includes('edit') || window.location.href.includes('create')){
             history.push('/');
-        }
+        };
     };
     onSubmitLogin = (userData) => {
         this.props.startLogin(userData)

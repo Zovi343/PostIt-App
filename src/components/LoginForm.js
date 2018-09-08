@@ -23,7 +23,7 @@ class LoginForm extends React.Component {
             name: this.state.name,
             password: this.state.password
         });
-    }
+    };
     render () {
         return (
             <div className="not-logged-in">

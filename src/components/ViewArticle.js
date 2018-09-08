@@ -18,7 +18,7 @@ export class ViewArticle extends React.Component {
             return false;
         } else {
             return true;
-        }
+        };
     };
     onClickEdit = () => {
         this.props.history.push(`/edit/${this.props.article._id}`);
@@ -28,28 +28,28 @@ export class ViewArticle extends React.Component {
             this.props.startRemoveLike( this.props.article._id, this.props.userId);
         } else {
             this.props.startAddLike( this.props.article._id , this.props.userId);
-        }
+        };
     };
     likeStyle = () => {
         if (this.props.article.likes.includes(this.props.userId)){
             return  ( <IoIosHeart className="icon icon--loggedin" />);
         } else {
             return ( <IoIosHeartEmpty className="icon icon--loggedin"  />);;
-        }
+        };
     };
     commentAllowed = () => {
         if (!!this.props.userId){
             return false
         } else {
             return true
-        }
+        };
     };
     likeAllowed = () => {
         if (!!this.props.userId){
             return false
         } else {
             return true
-        }
+        };
     };
     render() {
         return (

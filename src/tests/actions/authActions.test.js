@@ -22,7 +22,7 @@ beforeEach(() => {
     global.sessionStorage = jest.genMockFunction();
     global.sessionStorage.setItem = jest.genMockFunction();
     global.sessionStorage.removeItem = jest.genMockFunction();
-})
+});
 
 test('startSignUp should call axios and dispatch storeUser', async () => {
     const store = createMockStore();

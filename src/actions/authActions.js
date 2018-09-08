@@ -31,7 +31,7 @@ export const startSignUp = (userData) => {
             }
             //login property here helps me determine on which form I should render error
             dispatch(apiError({error:'User with this name already exists.' ,login: false}));
-        }
+        };
     };
 };
 
@@ -58,7 +58,7 @@ export const startLogin = (userData) => {
             }
             //login property here helps me determine on which form I should render error
             dispatch(apiError({error:'Wrong name or password.', login: true}));
-        }
+        };
     };
 };
 
@@ -81,10 +81,10 @@ export const getUser = (userToken) => {
              console.log('Error in getUser:', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-         }
+            };
+         };
      };
-}
+};
 
 //startLogout
 export const startLogout = (userToken) => {
@@ -99,8 +99,8 @@ export const startLogout = (userToken) => {
         console.log('Error in startLogout:', e);
         if(e.message === 'Network Error'){
             dispatch(setNetworkError());
-        }
-    }
+        };
+    };
     };
 };
 

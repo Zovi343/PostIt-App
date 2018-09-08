@@ -16,7 +16,7 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return action.updatedArticle
                 } else {
                     return article
-                }
+                };
             });
         case 'REMOVE_ARTICLE':
             return state.filter((article) => article._id !== action.id);
@@ -28,7 +28,7 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return newArticle;
                 } else {
                     return article
-                }
+                };
             });
         case 'REMOVE_COMMENT': 
             return state.map((article) => {
@@ -38,7 +38,7 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return newArticle;
                 } else {
                     return article
-                }
+                };
             });
         case 'ADD_LIKE':
             return state.map((article) => {
@@ -48,7 +48,7 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return newArticle;
                 } else {
                     return article
-                }
+                };
             });
         case 'REMOVE_LIKE':
             return state.map((article) => {
@@ -58,9 +58,9 @@ export default ( state = articlesReducerDefaultState, action) => {
                     return newArticle;
                 } else {
                     return article
-                }
+                };
             });
         default:
             return state;
-    }
+    };
 };

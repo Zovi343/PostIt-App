@@ -6,6 +6,7 @@ exports[`should render ArticleListFilter with both buttons disabled set to true 
 >
   <form
     className="filter__group filter-form"
+    onSubmit={[Function]}
   >
     <input
       className="filter-form__input"

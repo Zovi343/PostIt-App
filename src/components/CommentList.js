@@ -15,6 +15,6 @@ const CommentList = (props) => (
         }
         </ol>
     </div>
-)
+);
 
 export default CommentList;

@@ -12,14 +12,14 @@ class ArticleForm extends React.Component {
         const title = e.target.value;
         this.setState(() => ({
             title
-        }))
-    }
+        }));
+    };
     onTextChange = (e) => {
         const text = e.target.value;
         this.setState(() => ({
             text
-        }))
-    }
+        }));
+    };
     onSubmit = (e) => {
         e.preventDefault();
         if (this.state.title.trim().length < 3 || this.state.text.trim().length < 3) {
@@ -32,8 +32,8 @@ class ArticleForm extends React.Component {
                 text: this.state.text,
                 createdAt: this.state.createdAt
             });
-        }
-    }
+        };
+    };
     render () {
        return ( 
             <form className="add-edit-form" onSubmit={this.onSubmit}> 
@@ -61,7 +61,7 @@ class ArticleForm extends React.Component {
                 </div>
             </form>
        );
-    }
-}
+    };
+};
 
 export default ArticleForm;

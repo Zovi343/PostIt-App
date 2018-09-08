@@ -25,8 +25,8 @@ class CommentArticle extends React.Component {
                 comment: '',
                 error: ''
             }));
-        }
-    }
+        };
+    };
     render () {
         return (
             <form className="comment-form" onSubmit={this.onSubmit}>

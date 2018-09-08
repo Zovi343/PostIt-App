@@ -50,8 +50,8 @@ class SingUpForm extends React.Component {
                 name: this.state.name,
                 password: this.state.password
             });
-        }
-    }
+        };
+    };
     render () {
         return (
             <div className="not-logged-in">
@@ -80,8 +80,8 @@ class SingUpForm extends React.Component {
                         : <p></p>
                 }
             </div>
-        )
-    }
-}
+        );
+    };
+};
 
 export default SingUpForm;

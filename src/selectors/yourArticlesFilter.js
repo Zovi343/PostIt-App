@@ -8,6 +8,6 @@ export default (articles, userId, {yourArticles, text}) => {
             return matchId && matchText;
         } else {
             return matchText;
-        }
+        };
     });
 };

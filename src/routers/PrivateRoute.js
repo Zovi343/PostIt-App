@@ -18,6 +18,6 @@ const PrivateRoute = ({
 
 const mapStateToProps = (state) => ({
     isAuth: state.auth.token
-})
+});
 
 export default connect(mapStateToProps)(PrivateRoute);

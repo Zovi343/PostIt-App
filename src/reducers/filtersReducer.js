@@ -2,7 +2,7 @@
 const filterReducerDefault = {
     yourArticles: false,
     text: ''
-}
+};
 
 export default (state = filterReducerDefault, action) => {
     switch (action.type) {
@@ -23,5 +23,5 @@ export default (state = filterReducerDefault, action) => {
             };
         default: 
             return state;
-    }
-}
+    };
+};

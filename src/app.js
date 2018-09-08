@@ -21,10 +21,14 @@ const jsx = (
 
 ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
+let hasRendered = false;
 const renderApp = () => {
-  store.dispatch(startSetArticles()).then(() => {
-    ReactDOM.render(jsx, document.getElementById('app'));
-  });
+  if (!hasRendered) {
+    store.dispatch(startSetArticles()).then(() => {
+      ReactDOM.render(jsx, document.getElementById('app'));
+    });
+    hasRendered = true;
+  }
 };
 
 const userToken = sessionStorage.getItem('token');

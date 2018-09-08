@@ -9,5 +9,5 @@ export default (state = {}, action) => {
             return { authFailed: action.error}
         default:
             return state;
-    }
-}
+    };
+};

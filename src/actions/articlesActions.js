@@ -10,7 +10,6 @@ export const startSetArticles = () => {
     return async (dispatch) => {
         try {
             const response = await axios.get('/articles');
-            console.log(response.data.sortedArticles);
             dispatch(setArticles(response.data.sortedArticles));
             
         } catch (e) {
@@ -19,15 +18,15 @@ export const startSetArticles = () => {
             } else {
                 // it is here in else because I am testing this in test case, so in order to stop it from print out in terminal every single time I run test I put it in else statement, I am not going to test other thats why they are not in else
                 console.log('Error in startSetArticles:', e); 
-            }
-        }
+            };
+        };
     };
 };
 
 // this action is called right above in the case that server is down it is handled by networkErrorReducer and also store in store in field networkError
 export const setNetworkError = () => ({
     type: 'NETWORK_ERROR'
-})
+});
 
 export const startAddArticle = (article) => {
     return async (dispatch, getState) => {
@@ -47,8 +46,8 @@ export const startAddArticle = (article) => {
             console.log('Error in startAddArticle:', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
 };
 
@@ -69,8 +68,8 @@ export const startEditArticle = (articleId, article) => {
             console.log('Error in startEditArticle:', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
 };
 
@@ -87,8 +86,8 @@ export const startRemoveArticle = (articleId) => {
             console.log('Error in startRemoveArticle', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
 };
 
@@ -108,10 +107,10 @@ export const startCommentArticle = (articleId, comment) => {
             console.log('Error in startCommentArticle', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
-}
+};
 
 export const startRemoveComment = (articleId, commentId) => {
     return async (dispatch, getState) => {
@@ -125,8 +124,8 @@ export const startRemoveComment = (articleId, commentId) => {
             console.log('Error in startRemoveComment', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
 };
 
@@ -142,8 +141,8 @@ export const startAddLike = (articleId ,userId) => {
             console.log('Error in startAddLike', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
 };
 
@@ -159,8 +158,8 @@ export const startRemoveLike = (articleId ,userId) => {
             console.log('Error in startRemoveLike', e);
             if(e.message === 'Network Error'){
                 dispatch(setNetworkError());
-            }
-        }
+            };
+        };
     };
 };
 
