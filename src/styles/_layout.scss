@@ -8,7 +8,7 @@
         height: 100vh;
         max-width: 100%;
         width: 100%;
-      }
+    }
 
     flex:1;
     display: flex;
@@ -56,8 +56,12 @@
 .main-content {
     background-color: $color-grey-light-3;
     border-bottom-right-radius: 3px;
-    
+    height: 64.9rem;
     flex: 1;
+
+    @include respond(tab-land) {
+        height: 100%;
+    }
 
     @include respond(tab-port) {
         flex-basis: auto;
