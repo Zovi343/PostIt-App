@@ -18,5 +18,6 @@ yarn dev-server
 Note that this app makes http requests to PostIt-API which you can also find in my repository. So for this app to work you need to run it simultaneously with PostIt-API.
 
 ## Running the tests
-
+```
 yarn test
+```
